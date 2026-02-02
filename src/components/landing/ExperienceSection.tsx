@@ -2,33 +2,33 @@ import { Scissors, Pen, GraduationCap, Users } from "lucide-react";
 import calligraphyImg from "@/assets/experience-calligraphy-new.jpg";
 import paperCuttingImg from "@/assets/experience-paper-cutting-new.webp";
 import chineseLessonImg from "@/assets/experience-chinese-lesson.jpg";
-import photoCornerImg from "@/assets/experience-photo-corner.jpg";
+import counselingImg from "@/assets/experience-counseling.jpg";
 const experiences = [{
   icon: Pen,
   title: "Chinese Calligraphy",
   description: "Master the art of brushwork with traditional ink and rice paper. Write your name in beautiful Chinese characters.",
   image: calligraphyImg,
-  tags: ["Practice & Art", "Take Paper", "Make a Wishing"],
+  tags: ["Practice & Art", "Explore Creativity"],
   imageFirst: true
 }, {
   icon: Scissors,
   title: "Paper Cutting (剪纸)",
   description: "Create intricate paper cutting art designs using this ancient art of Chinese paper cutting.",
   image: paperCuttingImg,
-  tags: ["Red Paper", "Fancy Patterns", "Festival Designs"],
+  tags: ["Fun Patterns", "Festival Designs"],
   imageFirst: false
 }, {
   icon: GraduationCap,
   title: "On-spot Admissions & Scholarships",
   description: "Apply on the spot and get expert guidance on scholarships and eligibility.",
   image: chineseLessonImg,
-  tags: ["Apply Now", "Scholarship Review", "Eligibility Check"],
+  tags: ["Scholarship Review", "Eligibility Check"],
   imageFirst: true
 }, {
   icon: Users,
   title: "Student & Parent Counseling",
   description: "Personalized academic advice and dedicated support for parents.",
-  image: photoCornerImg,
+  image: counselingImg,
   tags: ["Career Guidance", "University Selection", "Parent Support"],
   imageFirst: false
 }];
