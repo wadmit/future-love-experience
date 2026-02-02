@@ -1,21 +1,25 @@
 import { Button } from "@/components/ui/button";
 import { Heart, Calendar, MapPin, Sparkles } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
-
 const HeroSection = () => {
-  const stats = [
-    { value: "500+", label: "Expected Attendees", color: "text-gold" },
-    { value: "5min", label: "Scholarship Test", color: "text-primary" },
-    { value: "45k", label: "Drone Giveaway", color: "text-gold" },
-  ];
-
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+  const stats = [{
+    value: "500+",
+    label: "Expected Attendees",
+    color: "text-gold"
+  }, {
+    value: "5min",
+    label: "Scholarship Test",
+    color: "text-primary"
+  }, {
+    value: "45k",
+    label: "Drone Giveaway",
+    color: "text-gold"
+  }];
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBg})` }}
-      />
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
+      backgroundImage: `url(${heroBg})`
+    }} />
       
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/40" />
@@ -64,7 +68,7 @@ const HeroSection = () => {
           </div>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm">
             <MapPin className="w-4 h-4 text-primary" />
-            <span className="text-white font-medium text-sm">WiseAdmit Landmark, Chitwan</span>
+            <span className="text-white font-medium text-sm"> Landmark Hotel, Chitwan</span>
           </div>
         </div>
         
@@ -74,10 +78,7 @@ const HeroSection = () => {
             <Heart className="w-5 h-5" />
             Register for Event
           </Button>
-          <Button 
-            size="xl" 
-            className="bg-transparent border-2 border-gold text-gold hover:bg-gold hover:text-foreground font-semibold gap-2 transition-all duration-300"
-          >
+          <Button size="xl" className="bg-transparent border-2 border-gold text-gold hover:bg-gold hover:text-foreground font-semibold gap-2 transition-all duration-300">
             <Sparkles className="w-5 h-5" />
             Become Event Ambassador
           </Button>
@@ -85,21 +86,17 @@ const HeroSection = () => {
         
         {/* Stats */}
         <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mt-16 opacity-0-initial animate-fade-up delay-600">
-          {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
+          {stats.map(stat => <div key={stat.label} className="text-center">
               <p className={`font-display text-4xl md:text-5xl font-bold ${stat.color}`}>
                 {stat.value}
               </p>
               <p className="text-white/70 text-sm mt-1">{stat.label}</p>
-            </div>
-          ))}
+            </div>)}
         </div>
       </div>
       
       {/* Bottom Gradient */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;
