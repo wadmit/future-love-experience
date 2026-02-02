@@ -1,34 +1,79 @@
 
 
-## Replace Navigation Bar Logo
+## Add Service Cards to Experience China Section
 
-Updating the navigation bar to use the new WiseAdmit logo (orange and navy blue design with "W" icon and text).
+Adding two new service-focused cards at the top of the Experience China section to highlight the on-spot admissions support and counseling services.
 
-### What will change
+### New Cards to Add
 
-| Location | Current | New |
-|----------|---------|-----|
-| Header Logo | Existing `wiseadmit-logo.svg` | New logo with orange/navy "W" icon and "WiseAdmit" text |
+| Card | Title | Features |
+|------|-------|----------|
+| 1 | On-spot Admissions & Scholarship Support | Admission processing, Scholarship eligibility review, Document verification |
+| 2 | Student & Parent Counseling Desk | Career pathway counseling, University selection support, Parent guidance on finances |
 
-### Important Note
+### Design Approach
 
-Since the new logo has a navy blue color scheme, it will be clearly visible when the header has a white background (after scrolling). However, when the header is transparent at the top of the page (against the dark hero section), the navy text may have lower contrast. This is typically fine as the orange portions remain visible.
+Since these are service cards (not image-based cultural experiences), I will create a separate card grid at the top of the section using a clean card design with:
+- Icon for each service
+- Title
+- Bullet list of features
+- Matching visual style with the rest of the section
 
 ### Implementation
 
-**Step 1: Copy the new logo to project assets**
-- Copy `Group_1597881817.png` → `src/assets/wiseadmit-logo-new.png`
+**File: `src/components/landing/ExperienceSection.tsx`**
 
-**Step 2: Update `src/components/landing/Header.tsx`**
+1. **Add new icons** - Import `GraduationCap` and `Users` from lucide-react for the two cards
 
-1. Update the import (line 4):
+2. **Create service cards data array** with the two new services:
    ```tsx
-   import logo from "@/assets/wiseadmit-logo-new.png";
+   const serviceCards = [
+     {
+       icon: GraduationCap,
+       title: "On-spot Admissions & Scholarship Support",
+       features: [
+         "On-spot admission processing and application assistance",
+         "Scholarship eligibility review and guidance",
+         "Document verification and readiness assessment"
+       ]
+     },
+     {
+       icon: Users,
+       title: "Student & Parent Counseling Desk",
+       features: [
+         "Academic and career pathway counseling",
+         "Program and university selection support",
+         "Dedicated guidance for parents on planning and finances"
+       ]
+     }
+   ];
    ```
 
-2. The existing `<img>` tag will automatically use the new logo - no other changes needed.
+3. **Add card grid** above the existing experience items:
+   - 2-column grid layout on desktop
+   - Full-width cards on mobile
+   - Card styling with border, rounded corners, and hover effect
+   - Each card contains: icon, title, and bullet list of features
 
-### Files affected
-- `src/assets/wiseadmit-logo-new.png` (new file)
-- `src/components/landing/Header.tsx` (update import)
+### Visual Layout
+
+```text
++--------------------------------------------------+
+|            Experience China (header)             |
++--------------------------------------------------+
+|  +---------------------+  +---------------------+ |
+|  | [icon]              |  | [icon]              | |
+|  | Admissions &        |  | Student & Parent    | |
+|  | Scholarship Support |  | Counseling Desk     | |
+|  | - Feature 1         |  | - Feature 1         | |
+|  | - Feature 2         |  | - Feature 2         | |
+|  | - Feature 3         |  | - Feature 3         | |
+|  +---------------------+  +---------------------+ |
++--------------------------------------------------+
+|         [Existing experience cards...]           |
++--------------------------------------------------+
+```
+
+### Files to Modify
+- `src/components/landing/ExperienceSection.tsx`
 
