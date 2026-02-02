@@ -1,90 +1,105 @@
-import { GraduationCap, Palette, Mic, Camera, Gift, Gamepad2, Plane } from "lucide-react";
+import { Scissors, Pen, BookOpen, Camera } from "lucide-react";
+import calligraphyImg from "@/assets/experience-calligraphy.jpg";
+import paperCuttingImg from "@/assets/experience-paper-cutting.jpg";
+import chineseLessonImg from "@/assets/experience-chinese-lesson.jpg";
+import photoCornerImg from "@/assets/experience-photo-corner.jpg";
 
 const experiences = [
   {
-    icon: GraduationCap,
-    title: "5-Minute Scholarship Assessment",
-    description: "Get personalized scholarship guidance tailored to your profile in just 5 minutes.",
-    emoji: "🎓",
+    icon: Pen,
+    title: "Chinese Calligraphy",
+    description: "Master the art of brushwork with traditional ink and rice paper. Write your name in beautiful Chinese characters.",
+    image: calligraphyImg,
+    tags: ["Practice & Art", "Take Paper", "Make a Wishing"],
+    imageFirst: true,
   },
   {
-    icon: Palette,
-    title: "Chinese Calligraphy & Paper Cutting",
-    description: "Experience traditional Chinese art forms and create your own masterpiece.",
-    emoji: "🖌",
+    icon: Scissors,
+    title: "Paper Cutting (剪纸)",
+    description: "Create intricate paper cutting art designs using this ancient art of Chinese paper cutting.",
+    image: paperCuttingImg,
+    tags: ["Red Paper", "Fancy Patterns", "Festival Designs"],
+    imageFirst: false,
   },
   {
-    icon: Mic,
-    title: "Talks by Mentors & Experts",
-    description: "Learn from industry leaders and education visionaries about your future.",
-    emoji: "🎤",
+    icon: BookOpen,
+    title: "Mini Chinese Lesson",
+    description: "Interactive 15-minute Mandarin session with native speakers. Learn greetings, self-introduction, and basic vocabulary.",
+    image: chineseLessonImg,
+    tags: ["Basic Phrases", "Pronunciation", "Cultural Context"],
+    imageFirst: true,
   },
   {
     icon: Camera,
-    title: "Photo & Reel Moments",
-    description: "Capture Instagram-worthy memories at our themed photo corners.",
-    emoji: "📸",
-  },
-  {
-    icon: Gift,
-    title: "On-spot Admissions",
-    description: "Apply and receive admission decisions right at the event.",
-    emoji: "🎁",
-  },
-  {
-    icon: Gamepad2,
-    title: "Games & Interactive Activities",
-    description: "Face painting, mini challenges, and fun games for all attendees.",
-    emoji: "🎮",
-  },
-  {
-    icon: Plane,
-    title: "₹45K Drone Giveaway",
-    description: "Participate for a chance to win an amazing drone worth ₹45,000!",
-    emoji: "🎁",
+    title: "Photo & Reel Corners",
+    description: "Capture Instagram-worthy moments at our beautifully decorated photo spots with Chinese New Year themes.",
+    image: photoCornerImg,
+    tags: ["CNY Props", "Lantern Backdrop", "Reel Station"],
+    imageFirst: false,
   },
 ];
 
 const ExperienceSection = () => {
   return (
-    <section className="section-padding bg-card relative overflow-hidden">
-      {/* Decorative Background */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-valentine-pink/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-gold/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
-      
+    <section id="experience" className="section-padding bg-background relative overflow-hidden">
       <div className="container-wide relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4 opacity-0-initial animate-fade-up">
-            What Awaits You
+            Cultural Immersion
           </span>
           <h2 className="display-lg text-foreground mb-6 opacity-0-initial animate-fade-up delay-100">
-            The Experience
+            Experience China
           </h2>
           <p className="body-lg text-muted-foreground opacity-0-initial animate-fade-up delay-200">
-            An evening packed with culture, connections, and opportunities. Here's what makes this event unforgettable.
+            Hands-on cultural activities that bring Chinese tradition to life
           </p>
         </div>
         
-        {/* Experience Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {/* Experience Items */}
+        <div className="space-y-8 lg:space-y-12">
           {experiences.map((experience, index) => (
             <div 
               key={experience.title}
-              className="group bg-background rounded-2xl p-6 lg:p-8 card-hover border border-border/50 opacity-0-initial animate-fade-up"
+              className={`grid lg:grid-cols-2 gap-6 lg:gap-10 items-center opacity-0-initial animate-fade-up`}
               style={{ animationDelay: `${(index + 3) * 100}ms` }}
             >
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
-                  <span className="text-2xl">{experience.emoji}</span>
+              {/* Image */}
+              <div className={`${experience.imageFirst ? 'lg:order-1' : 'lg:order-2'}`}>
+                <div className="relative rounded-2xl overflow-hidden bg-muted aspect-[4/3] group">
+                  <img 
+                    src={experience.image} 
+                    alt={experience.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
-                <div className="flex-1">
-                  <h3 className="font-display text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+              </div>
+              
+              {/* Content */}
+              <div className={`${experience.imageFirst ? 'lg:order-2' : 'lg:order-1'} flex flex-col justify-center`}>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <experience.icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <h3 className="font-display text-2xl lg:text-3xl font-bold text-foreground">
                     {experience.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {experience.description}
-                  </p>
+                </div>
+                
+                <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+                  {experience.description}
+                </p>
+                
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2">
+                  {experience.tags.map((tag) => (
+                    <span 
+                      key={tag}
+                      className="px-4 py-1.5 rounded-full bg-card border border-border text-sm text-foreground/80 hover:bg-primary/5 hover:border-primary/30 transition-colors duration-200"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
