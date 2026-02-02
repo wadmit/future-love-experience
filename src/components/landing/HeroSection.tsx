@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Heart, Calendar, MapPin, Sparkles } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
-
 const HeroSection = () => {
   const stats = [{
     value: "500+",
@@ -16,13 +15,11 @@ const HeroSection = () => {
     label: "Drone Giveaway",
     color: "text-gold"
   }];
-
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
-        backgroundImage: `url(${heroBg})`
-      }} />
+      backgroundImage: `url(${heroBg})`
+    }} />
       
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/40" />
@@ -55,8 +52,7 @@ const HeroSection = () => {
         
         {/* Description */}
         <p className="body-lg text-white/80 max-w-2xl mx-auto mt-6 opacity-0-initial animate-fade-up delay-300">
-          Celebrate Chinese New Year, discover study abroad opportunities, meet mentors, 
-          and unlock your path to China — all in one immersive experience.
+          Celebrate Chinese New Year, discover study abroad opportunities, meet mentors, and unlock your path to China.  
         </p>
         
         {/* Event Details */}
@@ -83,18 +79,14 @@ const HeroSection = () => {
         
         {/* Stats */}
         <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mt-16 opacity-0-initial animate-fade-up delay-600">
-          {stats.map(stat => (
-            <div key={stat.label} className="text-center">
+          {stats.map(stat => <div key={stat.label} className="text-center">
               <p className={`font-display text-4xl md:text-5xl font-bold ${stat.color}`}>
                 {stat.value}
               </p>
               <p className="text-white/70 text-sm mt-1">{stat.label}</p>
-            </div>
-          ))}
+            </div>)}
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;
