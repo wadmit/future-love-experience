@@ -51,7 +51,7 @@ const HeroSection = () => {
         </h1>
         
         {/* Description */}
-        <p className="body-lg text-white/80 max-w-2xl mx-auto mt-6 opacity-0-initial animate-fade-up delay-300">
+        <p className="body-lg text-white/80 max-w-2xl mx-auto mt-6 opacity-0-initial animate-fade-up delay-300 text-lg">
           Celebrate Chinese New Year, discover study abroad opportunities, meet mentors, and unlock your path to China.  
         </p>
         
