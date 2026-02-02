@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Heart } from "lucide-react";
+import logo from "@/assets/wiseadmit-logo.svg";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,15 +32,8 @@ const Header = () => {
     >
       <div className="container-wide flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2">
-          <Heart className="w-6 h-6 text-primary fill-primary" />
-          <span
-            className={`font-display font-bold text-xl transition-colors duration-300 ${
-              isScrolled ? "text-foreground" : "text-white"
-            }`}
-          >
-            WiseAdmit
-          </span>
+        <a href="/" className="flex items-center">
+          <img src={logo} alt="WiseAdmit" className="h-8 md:h-10" />
         </a>
 
         {/* Navigation - Desktop */}
