@@ -75,6 +75,14 @@ const GiveawaySection = () => {
               <div className="space-y-3 mb-8">
                 {steps.map((step, index) => {
                   const isFollowStep = step.title === "Follow WiseAdmit";
+                  
+                  // Format description with styled @wiseadmit for the follow step
+                  const formattedDescription = isFollowStep ? (
+                    <>
+                      Follow <span className="text-primary underline">@wiseadmit</span> on Instagram
+                    </>
+                  ) : step.description;
+                  
                   const content = (
                     <>
                       <span className="text-2xl flex-shrink-0">{step.emoji}</span>
@@ -83,7 +91,7 @@ const GiveawaySection = () => {
                           {step.title}
                         </h4>
                         <p className="text-sm text-white/70">
-                          {step.description}
+                          {formattedDescription}
                         </p>
                       </div>
                     </>
@@ -127,15 +135,20 @@ const GiveawaySection = () => {
             
             {/* Right Column - Drone Image */}
             <div className="order-1 lg:order-2 relative flex justify-center opacity-0-initial animate-fade-up">
-              {/* Golden glow effect behind drone */}
-              <div className="absolute inset-0 bg-gold/20 blur-3xl rounded-full scale-90" />
+              {/* Multi-layer glow effects behind drone */}
+              <div className="absolute inset-0 bg-primary/30 blur-[80px] rounded-full scale-75 animate-pulse" />
+              <div className="absolute inset-0 bg-gold/25 blur-[60px] rounded-full scale-90" />
+              <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full scale-110" />
               
               {/* Drone Image */}
               <div className="relative">
                 <img 
                   src={droneGiveawayImg} 
                   alt="Win a ₹45K Drone" 
-                  className="relative w-full max-w-md lg:max-w-lg animate-float drop-shadow-2xl"
+                  className="relative w-full max-w-md lg:max-w-lg animate-float"
+                  style={{
+                    filter: 'drop-shadow(0 0 30px hsl(var(--primary) / 0.4)) drop-shadow(0 0 60px hsl(var(--gold) / 0.3)) drop-shadow(0 25px 50px rgba(0,0,0,0.5))'
+                  }}
                 />
                 
                 {/* Price Badge */}
