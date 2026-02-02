@@ -1,49 +1,34 @@
 
-## Make Navigation Bar Sticky with Corrected Section Links
 
-Two changes to improve navigation: make the header sticky so it stays visible while scrolling, and fix the navigation links to match actual section IDs.
+## Update Experience Section Images
+
+Replacing the images for the Paper Cutting and Chinese Calligraphy cards with the new uploaded images.
 
 ### What will change
 
-**1. Sticky Header with Scroll-Aware Styling**
-The header will become fixed/sticky and change appearance when scrolling:
-- At top (in hero): Transparent background with white text
-- After scrolling: White/solid background with dark text for readability
-
-**2. Fixed Navigation Links**
-Current nav links have issues:
-- "Highlights" links to `#highlights` which doesn't exist
-- Missing links to Registration and FAQ sections
-
-Updated navigation:
-| Current | New |
-|---------|-----|
-| Highlights → #highlights | Experience → #experience |
-| Speakers → #speakers | Speakers → #speakers |
-| Experience → #experience | Giveaway → #giveaway |
-| Giveaway → #giveaway | Register → #register |
+| Card | Current Image | New Image |
+|------|---------------|-----------|
+| Chinese Calligraphy | `experience-calligraphy.jpg` | New calligraphy image (person writing Chinese characters with brush) |
+| Paper Cutting (剪纸) | `experience-paper-cutting.jpg` | New paper cutting image (man holding intricate red paper art) |
 
 ### Implementation
 
-**File: `src/components/landing/Header.tsx`**
+**Step 1: Copy uploaded images to project assets**
+- Copy `Chinese-Paper-Cutting-A-Traditional-Popular-Art-5.webp` → `src/assets/experience-paper-cutting-new.webp`
+- Copy `theline-4qMlm0RJN5w-unsplash.jpg` → `src/assets/experience-calligraphy-new.jpg`
 
-1. Add React `useState` and `useEffect` hooks to track scroll position
-2. Change header from `absolute` to `fixed` positioning
-3. Add conditional styling based on scroll state:
-   - Background: transparent → white with shadow
-   - Text: white → dark
-   - Logo text: white → primary color
-4. Update `navItems` array with correct section links:
+**Step 2: Update `src/components/landing/ExperienceSection.tsx`**
+
+1. Update imports (lines 2-3):
    ```tsx
-   const navItems = [
-     { label: "Experience", href: "#experience" },
-     { label: "Speakers", href: "#speakers" },
-     { label: "Giveaway", href: "#giveaway" },
-     { label: "Register", href: "#register" },
-   ];
+   import calligraphyImg from "@/assets/experience-calligraphy-new.jpg";
+   import paperCuttingImg from "@/assets/experience-paper-cutting-new.webp";
    ```
-5. Add smooth transition for background/text color changes
 
-### Technical Details
+2. The `experiences` array already references these variables, so no other changes needed - the new images will automatically be used.
 
-The scroll detection will use a threshold (e.g., 50px) to trigger the style change. This ensures the header remains readable on both dark (hero) and light (other sections) backgrounds.
+### Files affected
+- `src/assets/experience-paper-cutting-new.webp` (new file)
+- `src/assets/experience-calligraphy-new.jpg` (new file)
+- `src/components/landing/ExperienceSection.tsx` (update imports)
+
