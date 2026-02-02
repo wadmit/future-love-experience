@@ -17,7 +17,7 @@ const speakers = [
     },
   },
   {
-    name: "Swikar",
+    name: "Swikar Sharma",
     role: "Content Creation & Future Skills",
     image: swikarImg,
     featured: true,
@@ -28,7 +28,7 @@ const speakers = [
     },
   },
   {
-    name: "Sanju",
+    name: "Sanju Dongol",
     role: "Scholarships & Clarity",
     image: sanjuImg,
     featured: false,
@@ -39,7 +39,7 @@ const speakers = [
     },
   },
   {
-    name: "Peggy",
+    name: "Mrs. Jiejun Chen (Peggy)",
     role: "China, Culture & Mini Lesson",
     image: peggyImg,
     featured: false,
@@ -69,50 +69,52 @@ const SpeakersSection = () => {
             Learn from industry leaders who've guided thousands to success
           </p>
         </div>
-        
+
         {/* Speakers Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 mb-16">
           {speakers.map((speaker, index) => (
-            <div 
+            <div
               key={speaker.name}
-              className={`group text-center opacity-0-initial animate-fade-up ${speaker.featured ? 'lg:scale-105' : ''}`}
+              className={`group text-center opacity-0-initial animate-fade-up ${speaker.featured ? "lg:scale-105" : ""}`}
               style={{ animationDelay: `${(index + 3) * 100}ms` }}
             >
               {/* Image Container */}
-              <div className={`relative rounded-2xl overflow-hidden mb-6 aspect-[3/4] ${speaker.featured ? 'ring-2 ring-primary/50' : ''}`}>
-                <img 
-                  src={speaker.image} 
+              <div
+                className={`relative rounded-2xl overflow-hidden mb-6 aspect-[3/4] ${speaker.featured ? "ring-2 ring-primary/50" : ""}`}
+              >
+                <img
+                  src={speaker.image}
                   alt={speaker.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-              
+
               {/* Info */}
-              <h3 className={`font-display text-xl font-bold mb-2 ${speaker.featured ? 'text-primary' : 'text-foreground'}`}>
+              <h3
+                className={`font-display text-xl font-bold mb-2 ${speaker.featured ? "text-primary" : "text-foreground"}`}
+              >
                 {speaker.name}
               </h3>
-              <p className="text-muted-foreground text-sm mb-4">
-                {speaker.role}
-              </p>
-              
+              <p className="text-muted-foreground text-sm mb-4">{speaker.role}</p>
+
               {/* Social Icons */}
               <div className="flex justify-center gap-4">
-                <a 
-                  href={speaker.social.twitter} 
+                <a
+                  href={speaker.social.twitter}
                   className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-colors duration-200"
                 >
                   <Twitter className="w-4 h-4 text-muted-foreground" />
                 </a>
-                <a 
-                  href={speaker.social.linkedin} 
+                <a
+                  href={speaker.social.linkedin}
                   className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-colors duration-200"
                 >
                   <Linkedin className="w-4 h-4 text-muted-foreground" />
                 </a>
-                <a 
-                  href={speaker.social.instagram} 
+                <a
+                  href={speaker.social.instagram}
                   className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-colors duration-200"
                 >
                   <Instagram className="w-4 h-4 text-muted-foreground" />
