@@ -1,39 +1,21 @@
-import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Heart } from "lucide-react";
-import logo from "@/assets/wiseadmit-logo.svg";
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const navItems = [
-    { label: "Experience", href: "#experience" },
+    { label: "Highlights", href: "#highlights" },
     { label: "Speakers", href: "#speakers" },
+    { label: "Experience", href: "#experience" },
     { label: "Giveaway", href: "#giveaway" },
-    { label: "Register", href: "#register" },
   ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300 ${
-        isScrolled
-          ? "bg-card shadow-md"
-          : "bg-transparent"
-      }`}
-    >
+    <header className="absolute top-0 left-0 right-0 z-50 py-4">
       <div className="container-wide flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="flex items-center">
-          <img src={logo} alt="WiseAdmit" className="h-8 md:h-10" />
+        <a href="/" className="flex items-center gap-2">
+          <Heart className="w-6 h-6 text-primary fill-primary" />
+          <span className="font-display font-bold text-xl text-white">WiseAdmit</span>
         </a>
 
         {/* Navigation - Desktop */}
@@ -42,11 +24,7 @@ const Header = () => {
             <a
               key={item.label}
               href={item.href}
-              className={`transition-colors font-medium text-sm ${
-                isScrolled
-                  ? "text-foreground/80 hover:text-foreground"
-                  : "text-white/80 hover:text-white"
-              }`}
+              className="text-white/80 hover:text-white transition-colors font-medium text-sm"
             >
               {item.label}
             </a>

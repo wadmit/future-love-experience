@@ -1,6 +1,8 @@
 import { Calendar, MapPin, Clock, Mail, Phone, Instagram, Facebook, Linkedin } from "lucide-react";
+
 const Footer = () => {
-  return <footer className="text-secondary-foreground py-16 bg-[#1a1a1a]">
+  return (
+    <footer className="bg-secondary text-secondary-foreground py-16">
       <div className="container-wide">
         <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
           {/* Brand Section */}
@@ -14,13 +16,25 @@ const Footer = () => {
             
             {/* Social Links */}
             <div className="flex gap-3">
-              <a href="#" className="w-10 h-10 rounded-full bg-secondary-foreground/10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors duration-300" aria-label="Facebook">
+              <a
+                href="#"
+                className="w-10 h-10 rounded-full bg-secondary-foreground/10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+                aria-label="Facebook"
+              >
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-secondary-foreground/10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors duration-300" aria-label="Instagram">
+              <a
+                href="#"
+                className="w-10 h-10 rounded-full bg-secondary-foreground/10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+                aria-label="Instagram"
+              >
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-secondary-foreground/10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors duration-300" aria-label="LinkedIn">
+              <a
+                href="#"
+                className="w-10 h-10 rounded-full bg-secondary-foreground/10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+                aria-label="LinkedIn"
+              >
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>
@@ -34,7 +48,7 @@ const Footer = () => {
             <div className="space-y-4 text-secondary-foreground/70">
               <div className="flex items-center gap-3">
                 <MapPin className="w-5 h-5 text-secondary-foreground/50" />
-                <span>Bakhundol, Lalitpur , Nepal</span>
+                <span>Kathmandu, Nepal</span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-secondary-foreground/50" />
@@ -44,7 +58,9 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-secondary-foreground/50" />
-                <a href="tel:+97798XXXXXXXX" className="hover:text-primary transition-colors">+977- 9802356756</a>
+                <a href="tel:+97798XXXXXXXX" className="hover:text-primary transition-colors">
+                  +977 98XXXXXXXX
+                </a>
               </div>
             </div>
           </div>
@@ -65,8 +81,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3">
                 <MapPin className="w-5 h-5 text-secondary-foreground/50" />
-                <span>Landmark Hotel , Chitwan
-              </span>
+                <span>Hotel Yak & Yeti, Durbar Marg, Kathmandu</span>
               </div>
             </div>
           </div>
@@ -79,6 +94,8 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 };
+
 export default Footer;

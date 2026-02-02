@@ -1,6 +1,6 @@
 import { Scissors, Pen, BookOpen, Camera } from "lucide-react";
-import calligraphyImg from "@/assets/experience-calligraphy-new.jpg";
-import paperCuttingImg from "@/assets/experience-paper-cutting-new.webp";
+import calligraphyImg from "@/assets/experience-calligraphy.jpg";
+import paperCuttingImg from "@/assets/experience-paper-cutting.jpg";
 import chineseLessonImg from "@/assets/experience-chinese-lesson.jpg";
 import photoCornerImg from "@/assets/experience-photo-corner.jpg";
 
