@@ -1,34 +1,44 @@
 
 
-## Hero Section Updates
+## Update Experience China Section Cards
 
-Making three changes to simplify and improve the hero section layout.
+Replacing two of the cultural experience cards with new service-focused content while keeping the same visual layout.
 
 ### Changes Overview
 
-| Change | Current | Updated |
-|--------|---------|---------|
-| "Explore China Awaits" text | Visible as h2 element | Removed completely |
-| Date & Location text | `text-sm` (14px) | `text-base` (16px) |
-| Button icons | Heart icon + Sparkles icon | Icons removed from both buttons |
+| Current Card | New Card | New Description |
+|--------------|----------|-----------------|
+| Mini Chinese Lesson | On-spot Admissions & Scholarships | Apply on the spot and get expert guidance on scholarships and eligibility. |
+| Photo & Reel Corners | Student & Parent Counseling | Personalized academic advice and dedicated support for parents. |
 
 ### Implementation Details
 
-**File: `src/components/landing/HeroSection.tsx`**
+**File: `src/components/landing/ExperienceSection.tsx`**
 
-1. **Remove "Explore China Awaits"** (lines 53-55)
-   - Delete the entire `<h2>` element containing this text
+1. **Update icons import** (line 1)
+   - Replace `BookOpen` with `GraduationCap` for admissions card
+   - Replace `Camera` with `Users` for counseling card
 
-2. **Increase date and location text size** (lines 67, 71)
-   - Change `text-sm` to `text-base` for both the date and location spans
-   - Also increase icon size from `w-4 h-4` to `w-5 h-5` for better proportion
+2. **Update Card 3** (lines 24-31)
+   - Change title from "Mini Chinese Lesson" to "On-spot Admissions & Scholarships"
+   - Change description to "Apply on the spot and get expert guidance on scholarships and eligibility."
+   - Change icon from `BookOpen` to `GraduationCap`
+   - Update tags to reflect admissions services (e.g., "Apply Now", "Scholarship Review", "Eligibility Check")
 
-3. **Remove button icons** (lines 77-84)
-   - Remove `<Heart className="w-5 h-5" />` from the "Register for Event" button
-   - Remove `<Sparkles className="w-5 h-5" />` from the "Become Event Ambassador" button
-   - Remove `gap-2` class from buttons since no icons
+3. **Update Card 4** (lines 32-39)
+   - Change title from "Photo & Reel Corners" to "Student & Parent Counseling"
+   - Change description to "Personalized academic advice and dedicated support for parents."
+   - Change icon from `Camera` to `Users`
+   - Update tags to reflect counseling services (e.g., "Career Guidance", "University Selection", "Parent Support")
 
-4. **Clean up imports** (line 2)
-   - Remove `Heart` and `Sparkles` from the lucide-react import since they're no longer used in buttons
-   - Keep `Calendar` and `MapPin` for the event details
+### Visual Result
+
+The section will still show 4 cards with the alternating image-text layout:
+1. Chinese Calligraphy (unchanged)
+2. Paper Cutting (unchanged)
+3. **On-spot Admissions & Scholarships** (new)
+4. **Student & Parent Counseling** (new)
+
+### Files to Modify
+- `src/components/landing/ExperienceSection.tsx`
 
