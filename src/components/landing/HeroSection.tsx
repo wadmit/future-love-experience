@@ -9,7 +9,7 @@ const HeroSection = () => {
   }, {
     value: "5min",
     label: "Scholarship Test",
-    color: "text-primary"
+    color: "text-gold"
   }, {
     value: "45k",
     label: "Drone Giveaway",
