@@ -29,7 +29,7 @@ const steps = [
 
 const GiveawaySection = () => {
   return (
-    <section id="giveaway" className="section-padding bg-primary text-primary-foreground relative overflow-hidden">
+    <section id="giveaway" className="section-padding text-white relative overflow-hidden" style={{ backgroundColor: '#001D46' }}>
       {/* Decorative floating dots */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(30)].map((_, i) => (
@@ -60,7 +60,7 @@ const GiveawaySection = () => {
             <h2 className="display-lg mb-4 opacity-0-initial animate-fade-up delay-100">
               Win a ₹45k Drone! 🚀
             </h2>
-            <p className="body-lg text-primary-foreground/80 max-w-2xl mx-auto opacity-0-initial animate-fade-up delay-200">
+            <p className="body-lg text-white/80 max-w-2xl mx-auto opacity-0-initial animate-fade-up delay-200">
               The more you engage, the more chances you get to win!
             </p>
           </div>
@@ -75,10 +75,10 @@ const GiveawaySection = () => {
                 style={{ animationDelay: `${(index + 3) * 100}ms` }}
               >
                 <div className="text-3xl mb-3">{step.emoji}</div>
-                <h3 className="font-display text-lg font-bold mb-2 text-primary-foreground">
+                <h3 className="font-display text-lg font-bold mb-2 text-white">
                   {step.title}
                 </h3>
-                <p className="text-sm text-primary-foreground/70">
+                <p className="text-sm text-white/70">
                   {step.description}
                 </p>
               </div>
@@ -92,7 +92,7 @@ const GiveawaySection = () => {
               Join the Giveaway
             </Button>
             
-            <p className="text-sm text-primary-foreground/70">
+            <p className="text-sm text-white/70">
               🎁 Already 200+ participants • 🎉 Winner announced on Feb 14
             </p>
           </div>
