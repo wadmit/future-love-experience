@@ -78,7 +78,7 @@ const HeroSection = () => {
             <Heart className="w-5 h-5" />
             Register for Event
           </Button>
-          <Button size="xl" className="bg-transparent border-2 border-gold text-gold hover:bg-gold hover:text-foreground font-semibold gap-2 transition-all duration-300">
+          <Button variant="heroOutline" size="xl" className="gap-2">
             <Sparkles className="w-5 h-5" />
             Become Event Ambassador
           </Button>
