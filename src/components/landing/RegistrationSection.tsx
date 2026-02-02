@@ -72,29 +72,29 @@ const RegistrationSection = () => {
   };
 
   return (
-    <section id="register" className="section-padding bg-secondary relative overflow-hidden">
+    <section id="register" className="section-padding bg-muted/30 relative overflow-hidden">
       <div className="container-wide relative z-10">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-10">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary text-sm font-semibold mb-4 tracking-widest opacity-0-initial animate-fade-up">
-              LIMITED SEATS
+            <span className="inline-block px-4 py-1.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold mb-4 tracking-widest opacity-0-initial animate-fade-up">
+              Limited Seats
             </span>
             <h2 className="display-lg mb-4 opacity-0-initial animate-fade-up delay-100">
-              <span className="text-secondary-foreground">Secure your </span>
+              <span className="text-foreground">Secure your </span>
               <span className="text-primary italic">spot</span>
             </h2>
-            <p className="body-lg text-secondary-foreground/60 opacity-0-initial animate-fade-up delay-200">
+            <p className="body-lg text-muted-foreground opacity-0-initial animate-fade-up delay-200">
               200 seats. One day. Your future.
             </p>
           </div>
           
-          {/* Registration Form */}
-          <form onSubmit={handleSubmit} className="bg-secondary rounded-2xl p-6 md:p-8 lg:p-10 opacity-0-initial animate-fade-up delay-300">
+          {/* Registration Form Card */}
+          <form onSubmit={handleSubmit} className="bg-card rounded-2xl p-8 md:p-10 shadow-xl opacity-0-initial animate-fade-up delay-300">
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               {/* Full Name */}
               <div>
-                <label className="block text-secondary-foreground text-sm font-medium mb-2">
+                <label className="block text-foreground text-sm font-medium mb-2">
                   Full Name
                 </label>
                 <input
@@ -102,14 +102,14 @@ const RegistrationSection = () => {
                   placeholder="Your name"
                   value={formData.fullName}
                   onChange={(e) => handleInputChange("fullName", e.target.value)}
-                  className={`w-full px-4 py-3 rounded-lg bg-secondary-foreground/5 border ${errors.fullName ? 'border-destructive' : 'border-secondary-foreground/20'} text-secondary-foreground placeholder:text-secondary-foreground/40 focus:outline-none focus:border-primary/50 transition-colors`}
+                  className={`w-full px-4 py-3 rounded-lg bg-muted/50 border ${errors.fullName ? 'border-destructive' : 'border-border'} text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-colors`}
                 />
                 {errors.fullName && <p className="text-destructive text-xs mt-1">{errors.fullName}</p>}
               </div>
               
               {/* Email */}
               <div>
-                <label className="block text-secondary-foreground text-sm font-medium mb-2">
+                <label className="block text-foreground text-sm font-medium mb-2">
                   Email
                 </label>
                 <input
@@ -117,14 +117,14 @@ const RegistrationSection = () => {
                   placeholder="you@example.com"
                   value={formData.email}
                   onChange={(e) => handleInputChange("email", e.target.value)}
-                  className={`w-full px-4 py-3 rounded-lg bg-secondary-foreground/5 border ${errors.email ? 'border-destructive' : 'border-secondary-foreground/20'} text-secondary-foreground placeholder:text-secondary-foreground/40 focus:outline-none focus:border-primary/50 transition-colors`}
+                  className={`w-full px-4 py-3 rounded-lg bg-muted/50 border ${errors.email ? 'border-destructive' : 'border-border'} text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-colors`}
                 />
                 {errors.email && <p className="text-destructive text-xs mt-1">{errors.email}</p>}
               </div>
               
               {/* Phone */}
               <div>
-                <label className="block text-secondary-foreground text-sm font-medium mb-2">
+                <label className="block text-foreground text-sm font-medium mb-2">
                   Phone
                 </label>
                 <input
@@ -132,14 +132,14 @@ const RegistrationSection = () => {
                   placeholder="+977 98XXXXXXXX"
                   value={formData.phone}
                   onChange={(e) => handleInputChange("phone", e.target.value)}
-                  className={`w-full px-4 py-3 rounded-lg bg-secondary-foreground/5 border ${errors.phone ? 'border-destructive' : 'border-secondary-foreground/20'} text-secondary-foreground placeholder:text-secondary-foreground/40 focus:outline-none focus:border-primary/50 transition-colors`}
+                  className={`w-full px-4 py-3 rounded-lg bg-muted/50 border ${errors.phone ? 'border-destructive' : 'border-border'} text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-colors`}
                 />
                 {errors.phone && <p className="text-destructive text-xs mt-1">{errors.phone}</p>}
               </div>
               
               {/* College */}
               <div>
-                <label className="block text-secondary-foreground text-sm font-medium mb-2">
+                <label className="block text-foreground text-sm font-medium mb-2">
                   College
                 </label>
                 <input
@@ -147,7 +147,7 @@ const RegistrationSection = () => {
                   placeholder="Your institution"
                   value={formData.college}
                   onChange={(e) => handleInputChange("college", e.target.value)}
-                  className={`w-full px-4 py-3 rounded-lg bg-secondary-foreground/5 border ${errors.college ? 'border-destructive' : 'border-secondary-foreground/20'} text-secondary-foreground placeholder:text-secondary-foreground/40 focus:outline-none focus:border-primary/50 transition-colors`}
+                  className={`w-full px-4 py-3 rounded-lg bg-muted/50 border ${errors.college ? 'border-destructive' : 'border-border'} text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-colors`}
                 />
                 {errors.college && <p className="text-destructive text-xs mt-1">{errors.college}</p>}
               </div>
@@ -155,7 +155,7 @@ const RegistrationSection = () => {
             
             {/* Registration Type */}
             <div className="mb-8">
-              <label className="block text-secondary-foreground text-sm font-medium mb-3">
+              <label className="block text-foreground text-sm font-medium mb-3">
                 I want to:
               </label>
               <div className="grid grid-cols-2 gap-4">
@@ -163,27 +163,29 @@ const RegistrationSection = () => {
                 <button
                   type="button"
                   onClick={() => handleInputChange("registrationType", "attend")}
-                  className={`p-4 rounded-xl border-2 text-left transition-all duration-200 ${
+                  className={`p-4 rounded-xl border text-left transition-all duration-200 ${
                     formData.registrationType === "attend"
                       ? "border-primary bg-primary/10"
-                      : "border-secondary-foreground/20 hover:border-secondary-foreground/40"
+                      : "border-border bg-muted/30 hover:border-muted-foreground/40"
                   }`}
                 >
                   <div className="flex items-center gap-3">
                     <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
                       formData.registrationType === "attend"
-                        ? "border-primary"
-                        : "border-secondary-foreground/40"
+                        ? "border-primary bg-primary"
+                        : "border-muted-foreground/40"
                     }`}>
                       {formData.registrationType === "attend" && (
-                        <div className="w-2.5 h-2.5 rounded-full bg-primary" />
+                        <svg className="w-3 h-3 text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
                       )}
                     </div>
                     <div>
-                      <p className={`font-semibold ${formData.registrationType === "attend" ? "text-primary" : "text-secondary-foreground"}`}>
+                      <p className={`font-semibold ${formData.registrationType === "attend" ? "text-foreground" : "text-foreground"}`}>
                         Attend
                       </p>
-                      <p className="text-xs text-secondary-foreground/60">
+                      <p className="text-xs text-muted-foreground">
                         Join as participant
                       </p>
                     </div>
@@ -194,27 +196,29 @@ const RegistrationSection = () => {
                 <button
                   type="button"
                   onClick={() => handleInputChange("registrationType", "ambassador")}
-                  className={`p-4 rounded-xl border-2 text-left transition-all duration-200 ${
+                  className={`p-4 rounded-xl border text-left transition-all duration-200 ${
                     formData.registrationType === "ambassador"
                       ? "border-primary bg-primary/10"
-                      : "border-secondary-foreground/20 hover:border-secondary-foreground/40"
+                      : "border-border bg-muted/30 hover:border-muted-foreground/40"
                   }`}
                 >
                   <div className="flex items-center gap-3">
                     <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
                       formData.registrationType === "ambassador"
-                        ? "border-primary"
-                        : "border-secondary-foreground/40"
+                        ? "border-primary bg-primary"
+                        : "border-muted-foreground/40"
                     }`}>
                       {formData.registrationType === "ambassador" && (
-                        <div className="w-2.5 h-2.5 rounded-full bg-primary" />
+                        <svg className="w-3 h-3 text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
                       )}
                     </div>
                     <div>
-                      <p className={`font-semibold ${formData.registrationType === "ambassador" ? "text-primary" : "text-secondary-foreground"}`}>
+                      <p className={`font-semibold ${formData.registrationType === "ambassador" ? "text-foreground" : "text-foreground"}`}>
                         Ambassador
                       </p>
-                      <p className="text-xs text-secondary-foreground/60">
+                      <p className="text-xs text-muted-foreground">
                         Lead & earn rewards
                       </p>
                     </div>
@@ -236,7 +240,7 @@ const RegistrationSection = () => {
             </Button>
             
             {/* Disclaimer */}
-            <p className="text-center text-secondary-foreground/50 text-sm mt-6">
+            <p className="text-center text-muted-foreground text-sm mt-6">
               By registering, you agree to receive event updates.
             </p>
           </form>
