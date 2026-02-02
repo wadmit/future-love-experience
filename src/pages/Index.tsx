@@ -1,3 +1,4 @@
+import Header from "@/components/landing/Header";
 import HeroSection from "@/components/landing/HeroSection";
 import ExperienceSection from "@/components/landing/ExperienceSection";
 import SpeakersSection from "@/components/landing/SpeakersSection";
@@ -11,6 +12,7 @@ import StickyRegistration from "@/components/landing/StickyRegistration";
 const Index = () => {
   return (
     <main className="min-h-screen">
+      <Header />
       <HeroSection />
       <ExperienceSection />
       <SpeakersSection />
