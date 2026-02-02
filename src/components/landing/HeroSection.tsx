@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Heart, Calendar, MapPin, Sparkles } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+
 const HeroSection = () => {
   const stats = [{
     value: "500+",
@@ -15,11 +16,13 @@ const HeroSection = () => {
     label: "Drone Giveaway",
     color: "text-gold"
   }];
-  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
-      backgroundImage: `url(${heroBg})`
-    }} />
+        backgroundImage: `url(${heroBg})`
+      }} />
       
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/40" />
@@ -50,10 +53,6 @@ const HeroSection = () => {
           <span className="inline-block ml-2">❤️</span>
         </h1>
         
-        <h2 className="display-md text-gold mt-4 opacity-0-initial animate-fade-up delay-200">
-          Explore China Awaits
-        </h2>
-        
         {/* Description */}
         <p className="body-lg text-white/80 max-w-2xl mx-auto mt-6 opacity-0-initial animate-fade-up delay-300">
           Celebrate Chinese New Year, discover study abroad opportunities, meet mentors, 
@@ -63,38 +62,39 @@ const HeroSection = () => {
         {/* Event Details */}
         <div className="flex flex-wrap justify-center gap-4 mt-8 opacity-0-initial animate-fade-up delay-400">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm">
-            <Calendar className="w-4 h-4 text-primary" />
-            <span className="text-white font-medium text-sm">Feb 14, 2026</span>
+            <Calendar className="w-5 h-5 text-primary" />
+            <span className="text-white font-medium text-base">Feb 14, 2026</span>
           </div>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm">
-            <MapPin className="w-4 h-4 text-primary" />
-            <span className="text-white font-medium text-sm"> Landmark Hotel, Chitwan</span>
+            <MapPin className="w-5 h-5 text-primary" />
+            <span className="text-white font-medium text-base">Landmark Hotel, Chitwan</span>
           </div>
         </div>
         
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10 opacity-0-initial animate-fade-up delay-500">
-          <Button variant="hero" size="xl" className="btn-glow gap-2">
-            <Heart className="w-5 h-5" />
+          <Button variant="hero" size="xl" className="btn-glow">
             Register for Event
           </Button>
-          <Button variant="heroOutline" size="xl" className="gap-2">
-            <Sparkles className="w-5 h-5" />
+          <Button variant="heroOutline" size="xl">
             Become Event Ambassador
           </Button>
         </div>
         
         {/* Stats */}
         <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mt-16 opacity-0-initial animate-fade-up delay-600">
-          {stats.map(stat => <div key={stat.label} className="text-center">
+          {stats.map(stat => (
+            <div key={stat.label} className="text-center">
               <p className={`font-display text-4xl md:text-5xl font-bold ${stat.color}`}>
                 {stat.value}
               </p>
               <p className="text-white/70 text-sm mt-1">{stat.label}</p>
-            </div>)}
+            </div>
+          ))}
         </div>
       </div>
-      
-    </section>;
+    </section>
+  );
 };
+
 export default HeroSection;
