@@ -1,79 +1,34 @@
 
 
-## Add Service Cards to Experience China Section
+## Hero Section Updates
 
-Adding two new service-focused cards at the top of the Experience China section to highlight the on-spot admissions support and counseling services.
+Making three changes to simplify and improve the hero section layout.
 
-### New Cards to Add
+### Changes Overview
 
-| Card | Title | Features |
-|------|-------|----------|
-| 1 | On-spot Admissions & Scholarship Support | Admission processing, Scholarship eligibility review, Document verification |
-| 2 | Student & Parent Counseling Desk | Career pathway counseling, University selection support, Parent guidance on finances |
+| Change | Current | Updated |
+|--------|---------|---------|
+| "Explore China Awaits" text | Visible as h2 element | Removed completely |
+| Date & Location text | `text-sm` (14px) | `text-base` (16px) |
+| Button icons | Heart icon + Sparkles icon | Icons removed from both buttons |
 
-### Design Approach
+### Implementation Details
 
-Since these are service cards (not image-based cultural experiences), I will create a separate card grid at the top of the section using a clean card design with:
-- Icon for each service
-- Title
-- Bullet list of features
-- Matching visual style with the rest of the section
+**File: `src/components/landing/HeroSection.tsx`**
 
-### Implementation
+1. **Remove "Explore China Awaits"** (lines 53-55)
+   - Delete the entire `<h2>` element containing this text
 
-**File: `src/components/landing/ExperienceSection.tsx`**
+2. **Increase date and location text size** (lines 67, 71)
+   - Change `text-sm` to `text-base` for both the date and location spans
+   - Also increase icon size from `w-4 h-4` to `w-5 h-5` for better proportion
 
-1. **Add new icons** - Import `GraduationCap` and `Users` from lucide-react for the two cards
+3. **Remove button icons** (lines 77-84)
+   - Remove `<Heart className="w-5 h-5" />` from the "Register for Event" button
+   - Remove `<Sparkles className="w-5 h-5" />` from the "Become Event Ambassador" button
+   - Remove `gap-2` class from buttons since no icons
 
-2. **Create service cards data array** with the two new services:
-   ```tsx
-   const serviceCards = [
-     {
-       icon: GraduationCap,
-       title: "On-spot Admissions & Scholarship Support",
-       features: [
-         "On-spot admission processing and application assistance",
-         "Scholarship eligibility review and guidance",
-         "Document verification and readiness assessment"
-       ]
-     },
-     {
-       icon: Users,
-       title: "Student & Parent Counseling Desk",
-       features: [
-         "Academic and career pathway counseling",
-         "Program and university selection support",
-         "Dedicated guidance for parents on planning and finances"
-       ]
-     }
-   ];
-   ```
-
-3. **Add card grid** above the existing experience items:
-   - 2-column grid layout on desktop
-   - Full-width cards on mobile
-   - Card styling with border, rounded corners, and hover effect
-   - Each card contains: icon, title, and bullet list of features
-
-### Visual Layout
-
-```text
-+--------------------------------------------------+
-|            Experience China (header)             |
-+--------------------------------------------------+
-|  +---------------------+  +---------------------+ |
-|  | [icon]              |  | [icon]              | |
-|  | Admissions &        |  | Student & Parent    | |
-|  | Scholarship Support |  | Counseling Desk     | |
-|  | - Feature 1         |  | - Feature 1         | |
-|  | - Feature 2         |  | - Feature 2         | |
-|  | - Feature 3         |  | - Feature 3         | |
-|  +---------------------+  +---------------------+ |
-+--------------------------------------------------+
-|         [Existing experience cards...]           |
-+--------------------------------------------------+
-```
-
-### Files to Modify
-- `src/components/landing/ExperienceSection.tsx`
+4. **Clean up imports** (line 2)
+   - Remove `Heart` and `Sparkles` from the lucide-react import since they're no longer used in buttons
+   - Keep `Calendar` and `MapPin` for the event details
 
