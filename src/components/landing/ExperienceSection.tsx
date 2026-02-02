@@ -1,8 +1,29 @@
-import { Scissors, Pen, BookOpen, Camera } from "lucide-react";
+import { Scissors, Pen, BookOpen, Camera, GraduationCap, Users } from "lucide-react";
 import calligraphyImg from "@/assets/experience-calligraphy-new.jpg";
 import paperCuttingImg from "@/assets/experience-paper-cutting-new.webp";
 import chineseLessonImg from "@/assets/experience-chinese-lesson.jpg";
 import photoCornerImg from "@/assets/experience-photo-corner.jpg";
+
+const serviceCards = [
+  {
+    icon: GraduationCap,
+    title: "On-spot Admissions & Scholarship Support",
+    features: [
+      "On-spot admission processing and application assistance",
+      "Scholarship eligibility review and guidance",
+      "Document verification and readiness assessment"
+    ]
+  },
+  {
+    icon: Users,
+    title: "Student & Parent Counseling Desk",
+    features: [
+      "Academic and career pathway counseling",
+      "Program and university selection support",
+      "Dedicated guidance for parents on planning and finances"
+    ]
+  }
+];
 
 const experiences = [
   {
@@ -54,6 +75,35 @@ const ExperienceSection = () => {
           <p className="body-lg text-muted-foreground opacity-0-initial animate-fade-up delay-200">
             Hands-on cultural activities that bring Chinese tradition to life
           </p>
+        </div>
+        
+        {/* Service Cards */}
+        <div className="grid md:grid-cols-2 gap-6 mb-16">
+          {serviceCards.map((service, index) => (
+            <div 
+              key={service.title}
+              className="bg-card border border-border rounded-2xl p-6 lg:p-8 hover:border-primary/30 hover:shadow-lg transition-all duration-300 opacity-0-initial animate-fade-up"
+              style={{ animationDelay: `${(index + 3) * 100}ms` }}
+            >
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                  <service.icon className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-display text-xl lg:text-2xl font-bold text-foreground">
+                  {service.title}
+                </h3>
+              </div>
+              
+              <ul className="space-y-3">
+                {service.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-3 text-muted-foreground">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
         
         {/* Experience Items */}
