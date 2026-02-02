@@ -45,8 +45,8 @@ const speakers = [{
   }
 }];
 const SpeakersSection = () => {
-  return <section id="speakers" className="section-padding bg-white relative overflow-hidden">
-      <div className="container-wide relative z-10">
+  return <section id="speakers" className="section-padding bg-white relative overflow-hidden text-4xl">
+      <div className="container-wide relative z-10 text-4xl">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary text-sm font-semibold mb-4 opacity-0-initial animate-fade-up">

@@ -1,34 +1,34 @@
 import { Scissors, Pen, GraduationCap, Users } from "lucide-react";
 import calligraphyImg from "@/assets/experience-calligraphy-new.jpg";
 import paperCuttingImg from "@/assets/experience-paper-cutting-new.webp";
-import admissionsImg from "@/assets/experience-admissions.png";
-import counselingImg from "@/assets/experience-counseling.jpg";
+import chineseLessonImg from "@/assets/experience-chinese-lesson.jpg";
+import photoCornerImg from "@/assets/experience-photo-corner.jpg";
 const experiences = [{
   icon: Pen,
   title: "Chinese Calligraphy",
   description: "Master the art of brushwork with traditional ink and rice paper. Write your name in beautiful Chinese characters.",
   image: calligraphyImg,
-  tags: ["Practice & Art", "Explore Creativity"],
+  tags: ["Practice & Art", "Take Paper", "Make a Wishing"],
   imageFirst: true
 }, {
   icon: Scissors,
   title: "Paper Cutting (剪纸)",
   description: "Create intricate paper cutting art designs using this ancient art of Chinese paper cutting.",
   image: paperCuttingImg,
-  tags: ["Fun Patterns", "Festival Designs"],
+  tags: ["Red Paper", "Fancy Patterns", "Festival Designs"],
   imageFirst: false
 }, {
   icon: GraduationCap,
   title: "On-spot Admissions & Scholarships",
   description: "Apply on the spot and get expert guidance on scholarships and eligibility.",
-  image: admissionsImg,
-  tags: ["Scholarship Review", "Eligibility Check"],
+  image: chineseLessonImg,
+  tags: ["Apply Now", "Scholarship Review", "Eligibility Check"],
   imageFirst: true
 }, {
   icon: Users,
   title: "Student & Parent Counseling",
   description: "Personalized academic advice and dedicated support for parents.",
-  image: counselingImg,
+  image: photoCornerImg,
   tags: ["Career Guidance", "University Selection", "Parent Support"],
   imageFirst: false
 }];
@@ -38,10 +38,10 @@ const ExperienceSection = () => {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           
-          <h2 className="display-lg text-foreground mb-6 opacity-0-initial animate-fade-up delay-100">
+          <h2 className="display-lg text-foreground mb-6 opacity-0-initial animate-fade-up delay-100 text-4xl">
             What You'll Experience
           </h2>
-          <p className="body-lg text-muted-foreground opacity-0-initial animate-fade-up delay-200">
+          <p className="body-lg text-muted-foreground opacity-0-initial animate-fade-up delay-200 text-lg">
             Hands-on cultural activities that bring Chinese tradition to life
           </p>
         </div>
