@@ -33,7 +33,7 @@ const Header = () => {
       <div className="container-wide flex items-center justify-between">
         {/* Logo */}
         <a href="/" className="flex items-center">
-          <img src={logo} alt="WiseAdmit" className="h-8 md:h-10" />
+          <img src={logo} alt="WiseAdmit" className="h-6 md:h-8" />
         </a>
 
         {/* Navigation - Desktop */}
