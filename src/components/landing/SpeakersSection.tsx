@@ -53,9 +53,9 @@ const SpeakersSection = () => {
             Meet the Experts
           </span>
           <h2 className="display-lg mb-6 opacity-0-initial animate-fade-up delay-100">
-            <span className="text-foreground">Speakers</span>
+            <span className="text-foreground text-5xl">Speakers</span>
             <span className="text-foreground"> & </span>
-            <span className="text-primary text-3xl md:text-4xl">Mentors</span>
+            <span className="text-primary text-3xl md:text-5xl">Mentors</span>
           </h2>
           <p className="body-lg text-muted-foreground opacity-0-initial animate-fade-up delay-200">
             Learn from industry leaders who've guided thousands to success
