@@ -1,7 +1,7 @@
 import { Scissors, Pen, GraduationCap, Users } from "lucide-react";
 import calligraphyImg from "@/assets/experience-calligraphy-new.jpg";
 import paperCuttingImg from "@/assets/experience-paper-cutting-new.webp";
-import chineseLessonImg from "@/assets/experience-chinese-lesson.jpg";
+import admissionsImg from "@/assets/experience-admissions.png";
 import counselingImg from "@/assets/experience-counseling.jpg";
 const experiences = [{
   icon: Pen,
@@ -21,7 +21,7 @@ const experiences = [{
   icon: GraduationCap,
   title: "On-spot Admissions & Scholarships",
   description: "Apply on the spot and get expert guidance on scholarships and eligibility.",
-  image: chineseLessonImg,
+  image: admissionsImg,
   tags: ["Scholarship Review", "Eligibility Check"],
   imageFirst: true
 }, {
