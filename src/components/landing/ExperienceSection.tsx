@@ -1,4 +1,4 @@
-import { Scissors, Pen, BookOpen, Camera } from "lucide-react";
+import { Scissors, Pen, GraduationCap, Users } from "lucide-react";
 import calligraphyImg from "@/assets/experience-calligraphy-new.jpg";
 import paperCuttingImg from "@/assets/experience-paper-cutting-new.webp";
 import chineseLessonImg from "@/assets/experience-chinese-lesson.jpg";
@@ -22,19 +22,19 @@ const experiences = [
     imageFirst: false,
   },
   {
-    icon: BookOpen,
-    title: "Mini Chinese Lesson",
-    description: "Interactive 15-minute Mandarin session with native speakers. Learn greetings, self-introduction, and basic vocabulary.",
+    icon: GraduationCap,
+    title: "On-spot Admissions & Scholarships",
+    description: "Apply on the spot and get expert guidance on scholarships and eligibility.",
     image: chineseLessonImg,
-    tags: ["Basic Phrases", "Pronunciation", "Cultural Context"],
+    tags: ["Apply Now", "Scholarship Review", "Eligibility Check"],
     imageFirst: true,
   },
   {
-    icon: Camera,
-    title: "Photo & Reel Corners",
-    description: "Capture Instagram-worthy moments at our beautifully decorated photo spots with Chinese New Year themes.",
+    icon: Users,
+    title: "Student & Parent Counseling",
+    description: "Personalized academic advice and dedicated support for parents.",
     image: photoCornerImg,
-    tags: ["CNY Props", "Lantern Backdrop", "Reel Station"],
+    tags: ["Career Guidance", "University Selection", "Parent Support"],
     imageFirst: false,
   },
 ];
