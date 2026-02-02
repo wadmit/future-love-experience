@@ -37,9 +37,7 @@ const ExperienceSection = () => {
       <div className="container-wide relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4 opacity-0-initial animate-fade-up">
-            Cultural Immersion
-          </span>
+          
           <h2 className="display-lg text-foreground mb-6 opacity-0-initial animate-fade-up delay-100">
             What You'll Experience
           </h2>
