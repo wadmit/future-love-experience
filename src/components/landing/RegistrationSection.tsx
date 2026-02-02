@@ -77,7 +77,7 @@ const RegistrationSection = () => {
         <div className="max-w-2xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-10">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold mb-4 tracking-widest opacity-0-initial animate-fade-up">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4 tracking-widest opacity-0-initial animate-fade-up">
               Limited Seats
             </span>
             <h2 className="display-lg mb-4 opacity-0-initial animate-fade-up delay-100">
