@@ -72,6 +72,14 @@ const FAQSection = () => {
             </AccordionItem>
           ))}
         </Accordion>
+
+        {/* Contact CTA */}
+        <p className="text-center mt-10 text-muted-foreground opacity-0-initial animate-fade-up delay-500">
+          Still have questions?{" "}
+          <a href="mailto:info@wiseadmit.com" className="text-primary font-medium hover:underline">
+            Contact us
+          </a>
+        </p>
       </div>
     </section>
   );
