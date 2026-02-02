@@ -2,7 +2,6 @@ import Header from "@/components/landing/Header";
 import HeroSection from "@/components/landing/HeroSection";
 import ExperienceSection from "@/components/landing/ExperienceSection";
 import SpeakersSection from "@/components/landing/SpeakersSection";
-import CulturalSection from "@/components/landing/CulturalSection";
 import GiveawaySection from "@/components/landing/GiveawaySection";
 import RegistrationSection from "@/components/landing/RegistrationSection";
 import FAQSection from "@/components/landing/FAQSection";
@@ -16,7 +15,6 @@ const Index = () => {
       <HeroSection />
       <ExperienceSection />
       <SpeakersSection />
-      <CulturalSection />
       <GiveawaySection />
       <RegistrationSection />
       <FAQSection />
