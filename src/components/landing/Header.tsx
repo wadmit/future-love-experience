@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Heart } from "lucide-react";
-import logo from "@/assets/wiseadmit-logo.svg";
+import logo from "@/assets/wiseadmit-logo-new.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
