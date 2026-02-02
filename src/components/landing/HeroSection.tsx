@@ -45,8 +45,8 @@ const HeroSection = () => {
         
         {/* Headline */}
         <h1 className="opacity-0-initial animate-fade-up delay-100">
-          <span className="display-xl text-primary">Fall in Love</span>
-          <span className="display-xl text-white"> with Your Future</span>
+          <span className="display-xl text-primary text-5xl">Fall in Love</span>
+          <span className="display-xl text-white text-5xl"> with Your Future</span>
           <span className="inline-block ml-2">❤️</span>
         </h1>
         
