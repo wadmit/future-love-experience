@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Gift, Instagram } from "lucide-react";
+import { Gift } from "lucide-react";
 import droneGiveawayImg from "@/assets/drone-giveaway-new.png";
 const steps = [{
   emoji: "💕",
@@ -107,9 +107,9 @@ const GiveawaySection = () => {
             {/* Right Column - Drone Image */}
             <div className="order-1 lg:order-2 relative opacity-0-initial animate-fade-up flex items-start justify-end border-primary-foreground">
               {/* Multi-layer glow effects behind drone */}
-              <div className="absolute inset-0 bg-primary/30 blur-[80px] rounded-full scale-75 animate-pulse" />
-              <div className="absolute inset-0 bg-gold/25 blur-[60px] rounded-full scale-90" />
-              <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full scale-110" />
+              <div className="absolute inset-0 bg-cyan-500/40 blur-[80px] rounded-full scale-75 animate-pulse" />
+              <div className="absolute inset-0 bg-blue-400/30 blur-[60px] rounded-full scale-90" />
+              <div className="absolute inset-0 bg-cyan-400/25 blur-[100px] rounded-full scale-110" />
               
               {/* Drone Image */}
               <div className="relative">
