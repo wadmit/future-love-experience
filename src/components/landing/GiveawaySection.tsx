@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Gift, Heart, Share2, MessageCircle, Users } from "lucide-react";
+import droneGiveawayImg from "@/assets/drone-giveaway.webp";
+
 const steps = [
   {
     icon: Heart,
@@ -48,23 +50,29 @@ const GiveawaySection = () => {
       
       <div className="container-wide relative z-10">
         <div className="max-w-5xl mx-auto">
-          {/* Gift Icon */}
-          <div className="flex justify-center mb-8 opacity-0-initial animate-fade-up">
-            <div className="w-20 h-20 rounded-full bg-gold flex items-center justify-center shadow-lg">
-              <Gift className="w-10 h-10 text-gold-foreground" />
+          {/* Hero Section with Drone Image and Text */}
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 mb-12">
+            {/* Drone Image */}
+            <div className="relative flex-shrink-0 opacity-0-initial animate-fade-up">
+              {/* Golden glow effect behind drone */}
+              <div className="absolute inset-0 bg-gold/20 blur-3xl rounded-full scale-75" />
+              <img 
+                src={droneGiveawayImg} 
+                alt="Win a ₹45K Drone" 
+                className="relative w-64 h-auto md:w-80 lg:w-96 animate-float drop-shadow-2xl"
+              />
+            </div>
+            
+            {/* Text Content */}
+            <div className="text-center lg:text-left">
+              <h2 className="display-lg mb-4 opacity-0-initial animate-fade-up delay-100">
+                Win a ₹45k Drone!
+              </h2>
+              <p className="body-lg text-white/80 max-w-md opacity-0-initial animate-fade-up delay-200">
+                The more you engage, the more chances you get to win!
+              </p>
             </div>
           </div>
-          
-          {/* Headline */}
-          <div className="text-center mb-12">
-            <h2 className="display-lg mb-4 opacity-0-initial animate-fade-up delay-100">
-              Win a ₹45k Drone! 🚀
-            </h2>
-            <p className="body-lg text-white/80 max-w-2xl mx-auto opacity-0-initial animate-fade-up delay-200">
-              The more you engage, the more chances you get to win!
-            </p>
-          </div>
-          
           
           {/* Steps Grid */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-12">
