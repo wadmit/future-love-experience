@@ -93,7 +93,11 @@ const GiveawaySection = () => {
               
               {/* Button */}
               <div className="flex flex-col sm:flex-row gap-4 opacity-0-initial animate-fade-up delay-700">
-                <Button variant="gold" size="lg">
+                <Button 
+                  variant="outline" 
+                  size="lg"
+                  className="bg-white border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                >
                   <Gift className="w-5 h-5 mr-2" />
                   Join the Giveaway
                 </Button>
