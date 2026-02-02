@@ -2,95 +2,106 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* WiseAdmit Event – Premium Editorial Design System
+   Brand: #EE701E (Orange), #003074 (Navy), White
+   Fusion: Valentine's warmth + Chinese New Year celebration
 */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    /* Primary Brand Orange */
+    --primary: 24 88% 52%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Deep Navy */
+    --secondary: 213 100% 23%;
+    --secondary-foreground: 0 0% 100%;
+    
+    /* Background - Warm Cream */
+    --background: 40 33% 98%;
+    --foreground: 20 14% 10%;
+    
+    /* Card - Pure White */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 20 14% 10%;
+    
+    /* Popover */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
+    --popover-foreground: 20 14% 10%;
+    
+    /* Muted - Warm Gray */
+    --muted: 40 20% 94%;
+    --muted-foreground: 20 10% 45%;
+    
+    /* Accent - Soft Valentine Pink */
+    --accent: 350 80% 65%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* CNY Gold Accent */
+    --gold: 43 90% 55%;
+    --gold-foreground: 20 14% 10%;
+    
+    /* Soft Pink for Valentine's */
+    --valentine-pink: 350 70% 88%;
+    --valentine-rose: 350 60% 70%;
+    
+    /* CNY Red */
+    --cny-red: 0 85% 50%;
+    --cny-red-foreground: 0 0% 100%;
+    
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Border & Input */
+    --border: 20 14% 10% / 0.55;
+    --input: 40 20% 90%;
+    --ring: 24 88% 52%;
+    
+    --radius: 0.75rem;
+    
+    /* Sidebar (keeping for component compatibility) */
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-primary: 24 88% 52%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 40 20% 94%;
+    --sidebar-accent-foreground: 20 14% 10%;
+    --sidebar-border: 40 20% 90%;
+    --sidebar-ring: 24 88% 52%;
+    
+    /* Typography */
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(24 88% 52% / 0.1) 0%, hsl(350 70% 88% / 0.3) 50%, hsl(43 90% 55% / 0.1) 100%);
+    --gradient-cta: linear-gradient(135deg, hsl(24 88% 52%) 0%, hsl(18 85% 48%) 100%);
+    --gradient-navy: linear-gradient(135deg, hsl(213 100% 23%) 0%, hsl(213 100% 18%) 100%);
+    --gradient-valentine: linear-gradient(135deg, hsl(350 70% 88% / 0.4) 0%, hsl(350 60% 70% / 0.2) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(43 90% 55%) 0%, hsl(38 85% 50%) 100%);
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(20 14% 10% / 0.08);
+    --shadow-card: 0 8px 30px -8px hsl(20 14% 10% / 0.12);
+    --shadow-elevated: 0 20px 50px -15px hsl(20 14% 10% / 0.2);
+    --shadow-glow-primary: 0 0 40px hsl(24 88% 52% / 0.3);
+    --shadow-glow-gold: 0 0 30px hsl(43 90% 55% / 0.4);
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 20 14% 8%;
+    --foreground: 40 20% 96%;
+    --card: 20 14% 12%;
+    --card-foreground: 40 20% 96%;
+    --popover: 20 14% 12%;
+    --popover-foreground: 40 20% 96%;
+    --muted: 20 14% 18%;
+    --muted-foreground: 40 10% 65%;
+    --border: 40 20% 96% / 0.15;
+    --input: 20 14% 20%;
   }
 }
 
@@ -99,7 +110,216 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Hero Section Styles */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .cta-gradient {
+    background: var(--gradient-cta);
+  }
+  
+  .navy-gradient {
+    background: var(--gradient-navy);
+  }
+  
+  .valentine-gradient {
+    background: var(--gradient-valentine);
+  }
+  
+  .gold-gradient {
+    background: var(--gradient-gold);
+  }
+  
+  /* Typography Classes */
+  .display-xl {
+    font-family: var(--font-display);
+    @apply text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight;
+  }
+  
+  .display-lg {
+    font-family: var(--font-display);
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight;
+  }
+  
+  .display-md {
+    font-family: var(--font-display);
+    @apply text-3xl md:text-4xl font-bold leading-tight;
+  }
+  
+  .body-lg {
+    @apply text-lg md:text-xl leading-relaxed;
+  }
+  
+  .body-md {
+    @apply text-base md:text-lg leading-relaxed;
+  }
+  
+  /* Card Styles */
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+    box-shadow: var(--shadow-card);
+  }
+  
+  .card-hover:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-elevated);
+  }
+  
+  /* Button Glow */
+  .btn-glow {
+    @apply transition-all duration-300;
+  }
+  
+  .btn-glow:hover {
+    box-shadow: var(--shadow-glow-primary);
+  }
+  
+  /* Decorative Elements */
+  .lantern-glow {
+    box-shadow: var(--shadow-glow-gold);
+  }
+  
+  /* Section Padding */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+  
+  .section-padding-sm {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+  
+  /* Container Widths */
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  /* Animation Keyframes */
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(24 88% 52% / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(24 88% 52% / 0.5);
+    }
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  
+  @keyframes confetti {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100vh) rotate(720deg);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes heart-beat {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+  
+  .animate-fade-up {
+    animation: fade-up 0.8s ease-out forwards;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  .animate-shimmer {
+    background: linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.3), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+  
+  .animate-heart-beat {
+    animation: heart-beat 1.5s ease-in-out infinite;
+  }
+  
+  /* Animation Delays */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-600 { animation-delay: 600ms; }
+  
+  /* Opacity Initial for Animated Elements */
+  .opacity-0-initial {
+    opacity: 0;
   }
 }
