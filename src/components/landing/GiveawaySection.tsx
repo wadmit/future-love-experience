@@ -1,7 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Gift, Heart, Share2, MessageCircle, Users } from "lucide-react";
-import droneImg from "@/assets/drone-giveaway.png";
-
 const steps = [
   {
     icon: Heart,
@@ -67,19 +65,6 @@ const GiveawaySection = () => {
             </p>
           </div>
           
-          {/* Drone Image */}
-          <div className="flex justify-center mb-12 opacity-0-initial animate-fade-up delay-200">
-            <div className="relative">
-              <img 
-                src={droneImg} 
-                alt="₹45K Drone Giveaway Prize" 
-                className="w-full max-w-md h-auto rounded-2xl shadow-2xl animate-float"
-              />
-              <div className="absolute -top-4 -right-4 bg-gold text-gold-foreground px-4 py-2 rounded-full font-bold text-sm shadow-lg">
-                Worth ₹45,000!
-              </div>
-            </div>
-          </div>
           
           {/* Steps Grid */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-12">
