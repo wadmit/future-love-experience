@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Gift, Heart, Share2, MessageCircle, Users } from "lucide-react";
-import droneImage from "@/assets/drone-giveaway.png";
 const steps = [
   {
     icon: Heart,
@@ -59,24 +58,13 @@ const GiveawaySection = () => {
           {/* Headline */}
           <div className="text-center mb-12">
             <h2 className="display-lg mb-4 opacity-0-initial animate-fade-up delay-100">
-              Win a ₹45k Drone!
+              Win a ₹45k Drone! 🚀
             </h2>
             <p className="body-lg text-white/80 max-w-2xl mx-auto opacity-0-initial animate-fade-up delay-200">
               The more you engage, the more chances you get to win!
             </p>
           </div>
           
-          {/* Drone Image */}
-          <div className="flex justify-center mb-8 opacity-0-initial animate-fade-up delay-300">
-            <img 
-              src={droneImage} 
-              alt="Drone Prize" 
-              className="w-72 md:w-96 object-contain drop-shadow-2xl"
-              style={{
-                filter: 'drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))',
-              }}
-            />
-          </div>
           
           {/* Steps Grid */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-12">
