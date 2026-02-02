@@ -1,118 +1,132 @@
-import { useState } from "react";
+import { Twitter, Linkedin, Instagram } from "lucide-react";
+import rupeshImg from "@/assets/speaker-rupesh.jpg";
+import swikarImg from "@/assets/speaker-swikar.jpg";
+import sanjuImg from "@/assets/speaker-sanju.jpg";
+import peggyImg from "@/assets/speaker-peggy.jpg";
 
 const speakers = [
   {
     name: "Rupesh Regmi",
-    role: "CEO & Study Abroad Visionary",
-    topic: "Vision & China Opportunities",
-    duration: "30 min",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-    funFact: "Has helped 5000+ students study abroad",
+    role: "Vision, China Opportunity & Decision-Making",
+    image: rupeshImg,
+    featured: true,
+    social: {
+      twitter: "#",
+      linkedin: "#",
+      instagram: "#",
+    },
   },
   {
     name: "Swikar",
-    role: "China Education & Future Skills Expert",
-    topic: "Content Creation & Future Skills",
-    duration: "30 min",
-    image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&h=400&fit=crop&crop=face",
-    funFact: "Built a 100K+ follower community",
-  },
-  {
-    name: "Lucy Winner",
-    role: "Social Media Guru & Giveaway Host",
-    topic: "Drone Giveaway Host",
-    duration: "Special",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face",
-    funFact: "Makes every event unforgettable",
+    role: "Content Creation & Future Skills",
+    image: swikarImg,
+    featured: true,
+    social: {
+      twitter: "#",
+      linkedin: "#",
+      instagram: "#",
+    },
   },
   {
     name: "Sanju",
-    role: "Scholarships & Clarity Specialist",
-    topic: "Scholarship Assessment Sessions",
-    duration: "15 min",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-    funFact: "Secured ₹2Cr+ in scholarships for students",
+    role: "Scholarships & Clarity",
+    image: sanjuImg,
+    featured: false,
+    social: {
+      twitter: "#",
+      linkedin: "#",
+      instagram: "#",
+    },
   },
   {
     name: "Peggy",
-    role: "Chinese Culture Ambassador",
-    topic: "China, Culture & Mini Lesson",
-    duration: "20 min",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
-    funFact: "Native speaker with 10+ years teaching",
+    role: "China, Culture & Mini Lesson",
+    image: peggyImg,
+    featured: false,
+    social: {
+      twitter: "#",
+      linkedin: "#",
+      instagram: "#",
+    },
   },
 ];
 
 const SpeakersSection = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
   return (
-    <section className="section-padding bg-background relative">
-      <div className="container-wide">
+    <section id="speakers" className="section-padding bg-secondary relative overflow-hidden">
+      <div className="container-wide relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-secondary/10 text-secondary text-sm font-semibold mb-4 opacity-0-initial animate-fade-up">
-            Learn from the Best
+          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary text-sm font-semibold mb-4 opacity-0-initial animate-fade-up">
+            Meet the Experts
           </span>
-          <h2 className="display-lg text-foreground mb-6 opacity-0-initial animate-fade-up delay-100">
-            Speakers & Mentors
+          <h2 className="display-lg mb-6 opacity-0-initial animate-fade-up delay-100">
+            <span className="text-secondary-foreground">Speakers</span>
+            <span className="text-secondary-foreground"> & </span>
+            <span className="text-primary">Mentors</span>
           </h2>
-          <p className="body-lg text-muted-foreground opacity-0-initial animate-fade-up delay-200">
-            Meet the visionaries who will guide you on your journey to studying in China.
+          <p className="body-lg text-secondary-foreground/70 opacity-0-initial animate-fade-up delay-200">
+            Learn from industry leaders who've guided thousands to success
           </p>
         </div>
-
+        
         {/* Speakers Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 mb-16">
           {speakers.map((speaker, index) => (
-            <div
+            <div 
               key={speaker.name}
-              className="group relative bg-card rounded-2xl overflow-hidden card-hover opacity-0-initial animate-fade-up"
+              className={`group text-center opacity-0-initial animate-fade-up ${speaker.featured ? 'lg:scale-105' : ''}`}
               style={{ animationDelay: `${(index + 3) * 100}ms` }}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
             >
-              {/* Image */}
-              <div className="aspect-[3/4] relative overflow-hidden">
-                <img
-                  src={speaker.image}
+              {/* Image Container */}
+              <div className={`relative rounded-2xl overflow-hidden mb-6 aspect-[3/4] ${speaker.featured ? 'ring-2 ring-primary/50' : ''}`}>
+                <img 
+                  src={speaker.image} 
                   alt={speaker.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/20 to-transparent" />
-                
-                {/* Fun Fact Overlay */}
-                <div 
-                  className={`absolute inset-0 bg-primary/90 flex items-center justify-center p-4 transition-opacity duration-300 ${
-                    hoveredIndex === index ? 'opacity-100' : 'opacity-0'
-                  }`}
-                >
-                  <p className="text-primary-foreground text-center font-medium">
-                    ✨ {speaker.funFact}
-                  </p>
-                </div>
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-
-              {/* Content */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 text-primary-foreground">
-                <h3 className="font-display text-lg font-bold mb-1">
-                  {speaker.name}
-                </h3>
-                <p className="text-sm text-primary-foreground/80 mb-2">
-                  {speaker.role}
-                </p>
-                <div className="flex items-center gap-2 text-xs">
-                  <span className="px-2 py-1 rounded-full bg-primary-foreground/20">
-                    {speaker.duration}
-                  </span>
-                  <span className="text-primary-foreground/70 truncate">
-                    {speaker.topic}
-                  </span>
-                </div>
+              
+              {/* Info */}
+              <h3 className={`font-display text-xl font-bold mb-2 ${speaker.featured ? 'text-primary' : 'text-secondary-foreground'}`}>
+                {speaker.name}
+              </h3>
+              <p className="text-secondary-foreground/60 text-sm mb-4">
+                {speaker.role}
+              </p>
+              
+              {/* Social Icons */}
+              <div className="flex justify-center gap-4">
+                <a 
+                  href={speaker.social.twitter} 
+                  className="w-9 h-9 rounded-full bg-secondary-foreground/10 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-colors duration-200"
+                >
+                  <Twitter className="w-4 h-4 text-secondary-foreground/60" />
+                </a>
+                <a 
+                  href={speaker.social.linkedin} 
+                  className="w-9 h-9 rounded-full bg-secondary-foreground/10 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-colors duration-200"
+                >
+                  <Linkedin className="w-4 h-4 text-secondary-foreground/60" />
+                </a>
+                <a 
+                  href={speaker.social.instagram} 
+                  className="w-9 h-9 rounded-full bg-secondary-foreground/10 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-colors duration-200"
+                >
+                  <Instagram className="w-4 h-4 text-secondary-foreground/60" />
+                </a>
               </div>
             </div>
           ))}
+        </div>
+        
+        {/* Closing Line */}
+        <div className="text-center opacity-0-initial animate-fade-up delay-700">
+          <p className="font-display text-2xl md:text-3xl text-secondary-foreground/80 italic">
+            Don't listen to us. <span className="text-primary font-semibold not-italic">Go test yourself.</span>
+          </p>
         </div>
       </div>
     </section>
