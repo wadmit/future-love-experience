@@ -58,7 +58,7 @@ const GiveawaySection = () => {
               
               {/* Headline */}
               <h2 className="display-lg mb-4 opacity-0-initial animate-fade-up delay-100">
-                Win a ₹45k Drone! 🚀
+                Win a 45K Drone!
               </h2>
               
               {/* Description */}
@@ -73,39 +73,47 @@ const GiveawaySection = () => {
               
               {/* Vertical Steps */}
               <div className="space-y-3 mb-8">
-                {steps.map((step, index) => (
-                  <div
-                    key={step.title}
-                    className="flex items-start gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/15 transition-colors duration-300 opacity-0-initial animate-fade-up"
-                    style={{ animationDelay: `${(index + 4) * 100}ms` }}
-                  >
-                    <span className="text-2xl flex-shrink-0">{step.emoji}</span>
-                    <div>
-                      <h4 className="font-display text-base font-bold text-white">
-                        {step.title}
-                      </h4>
-                      <p className="text-sm text-white/70">
-                        {step.description}
-                      </p>
+                {steps.map((step, index) => {
+                  const isFollowStep = step.title === "Follow WiseAdmit";
+                  const content = (
+                    <>
+                      <span className="text-2xl flex-shrink-0">{step.emoji}</span>
+                      <div>
+                        <h4 className="font-display text-base font-bold text-white">
+                          {step.title}
+                        </h4>
+                        <p className="text-sm text-white/70">
+                          {step.description}
+                        </p>
+                      </div>
+                    </>
+                  );
+                  
+                  return isFollowStep ? (
+                    <a
+                      key={step.title}
+                      href="https://instagram.com/wiseadmit"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-start gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/15 transition-colors duration-300 opacity-0-initial animate-fade-up cursor-pointer"
+                      style={{ animationDelay: `${(index + 4) * 100}ms` }}
+                    >
+                      {content}
+                    </a>
+                  ) : (
+                    <div
+                      key={step.title}
+                      className="flex items-start gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/15 transition-colors duration-300 opacity-0-initial animate-fade-up"
+                      style={{ animationDelay: `${(index + 4) * 100}ms` }}
+                    >
+                      {content}
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
               
-              {/* Buttons */}
+              {/* Button */}
               <div className="flex flex-col sm:flex-row gap-4 opacity-0-initial animate-fade-up delay-700">
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="border-white/30 text-white hover:bg-white/10 hover:text-white"
-                  asChild
-                >
-                  <a href="https://instagram.com/wiseadmit" target="_blank" rel="noopener noreferrer">
-                    <Instagram className="w-5 h-5 mr-2" />
-                    Follow on Instagram
-                  </a>
-                </Button>
-                
                 <Button variant="gold" size="lg">
                   <Gift className="w-5 h-5 mr-2" />
                   Join the Giveaway
