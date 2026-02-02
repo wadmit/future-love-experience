@@ -1,26 +1,29 @@
 
 
-## Change Giveaway Section Background Color
+## Update Speakers Section Styling
 
-A simple styling update to change the background of the "Win a ₹45k Drone" section to the specified dark navy color.
+Making three changes to the Speakers & Mentors section: white background, visible text colors, and removing the closing line.
 
-### What will change
+### Changes
 
-The giveaway section currently uses `bg-primary` as its background. I'll replace this with an inline style to set the exact hex color `#001D46`.
+**File: `src/components/landing/SpeakersSection.tsx`**
 
-### Implementation
+1. **Background color** - Change from `bg-secondary` to `bg-white` (line 56)
 
-**File: `src/components/landing/GiveawaySection.tsx`**
+2. **Text colors** - Update all `text-secondary-foreground` references to use dark colors visible on white:
+   - Line 64-65: "Speakers & " heading → `text-foreground` (dark text)
+   - Line 68: Subtitle → `text-muted-foreground` 
+   - Line 93: Non-featured speaker names → `text-foreground`
+   - Line 96: Speaker roles → `text-muted-foreground`
+   - Lines 104, 110, 116: Social icon backgrounds → `bg-gray-100`
+   - Lines 106, 112, 118: Social icon colors → `text-muted-foreground`
 
-Update line 32 to use inline styling for the background:
+3. **Remove closing line** - Delete the "Don't listen to us. Go test yourself." block (lines 125-130)
 
-```tsx
-// Before
-<section id="giveaway" className="section-padding bg-primary text-primary-foreground relative overflow-hidden">
+### Technical Details
 
-// After  
-<section id="giveaway" className="section-padding text-white relative overflow-hidden" style={{ backgroundColor: '#001D46' }}>
-```
-
-The text color will also be updated from `text-primary-foreground` to `text-white` since we're using a custom dark background, and I'll update any child elements that reference `text-primary-foreground` to use `text-white` for consistency.
+The current `text-secondary-foreground` is white (designed for dark navy background). Changing to:
+- `text-foreground` for headings (dark, high contrast)
+- `text-muted-foreground` for subtitles and secondary text (medium gray)
+- `bg-gray-100` for social icon button backgrounds (light gray, visible on white)
 
