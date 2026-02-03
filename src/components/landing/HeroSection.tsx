@@ -40,7 +40,7 @@ const HeroSection = () => {
         {/* Event Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8 opacity-0-initial animate-fade-up">
           <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-          <span className="text-sm font-medium text-white">WiseAdmit Flagship Event 2026</span>
+          <span className="text-sm font-medium text-white">An Immersive China Experience  </span>
         </div>
         
         {/* Headline */}
