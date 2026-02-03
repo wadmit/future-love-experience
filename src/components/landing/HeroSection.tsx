@@ -3,7 +3,7 @@ import { Heart, Calendar, MapPin, Sparkles } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 const HeroSection = () => {
   const stats = [{
-    value: "100+",
+    value: "300+",
     label: "Expected Attendees",
     color: "text-gold"
   }, {
