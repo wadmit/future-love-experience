@@ -26,11 +26,11 @@ const faqs = [
   //   answer:
   //     "Absolutely! We encourage parents to attend. There will be dedicated sessions and information designed specifically for parents to understand the study abroad process, safety measures, and support systems available for students in China.",
   // },
-  {
-    question: "How does the drone giveaway work?",
-    answer:
-      "To participate: 1) Follow WiseAdmit on Instagram, 2) Share the event post, 3) Comment on our giveaway post. The winner will be announced live at the event on February 14. You must be present to win!",
-  },
+  // {
+  //   question: "How does the drone giveaway work?",
+  //   answer:
+  //     "To participate: 1) Follow WiseAdmit on Instagram, 2) Share the event post, 3) Comment on our giveaway post. The winner will be announced live at the event on February 14. You must be present to win!",
+  // },
   {
     question: "What should I bring to the event?",
     answer:
