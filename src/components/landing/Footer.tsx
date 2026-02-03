@@ -8,9 +8,7 @@ const Footer = () => {
             <h3 className="font-display text-2xl font-bold text-card mb-4">
               WiseAdmit
             </h3>
-            <p className="text-secondary-foreground/70 leading-relaxed mb-6">
-              Helping students navigate their journey to world-class education in China. We connect dreams with opportunities through personalized guidance and exclusive scholarship access.
-            </p>
+            <p className="text-secondary-foreground/70 leading-relaxed mb-6">Helping students navigate their journey to world-class education. We connect dreams with opportunities through personalized guidance and exclusive scholarship access.</p>
             
             {/* Social Links */}
             <div className="flex gap-3">
@@ -38,13 +36,11 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-secondary-foreground/50" />
-                <a href="mailto:info@wiseadmit.com" className="hover:text-primary transition-colors">
-                  info@wiseadmit.com
-                </a>
+                <a href="mailto:info@wiseadmit.com" className="hover:text-primary transition-colors">info@wiseadmit.io</a>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-secondary-foreground/50" />
-                <a href="tel:+97798XXXXXXXX" className="hover:text-primary transition-colors">+977- 9802356756</a>
+                <a href="tel:+97798XXXXXXXX" className="hover:text-primary transition-colors">+977- 9802356755</a>
               </div>
             </div>
           </div>
