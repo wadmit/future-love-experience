@@ -96,15 +96,20 @@ const HeroSection = () => {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mt-16 opacity-0-initial animate-fade-up delay-600">
+        <div className="mt-16 flex flex-wrap justify-center gap-6 opacity-0-initial animate-fade-up delay-600">
           {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
+            <div
+              key={stat.label}
+              className="min-w-[140px] rounded-2xl border border-white/20 bg-white/10 px-8 py-5 text-center backdrop-blur-sm"
+            >
               <p
-                className={`font-display text-4xl md:text-5xl font-bold ${stat.color}`}
+                className={`font-display text-3xl md:text-4xl font-bold tracking-tight ${stat.color}`}
               >
                 {stat.value}
               </p>
-              <p className="text-white/70 text-sm mt-1">{stat.label}</p>
+              <p className="mt-2 text-sm font-medium uppercase tracking-wider text-white/80">
+                {stat.label}
+              </p>
             </div>
           ))}
         </div>
