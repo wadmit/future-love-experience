@@ -93,11 +93,7 @@ const GiveawaySection = () => {
               
               {/* Button */}
               <div className="flex flex-col sm:flex-row gap-4 opacity-0-initial animate-fade-up delay-700">
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                  className="bg-white border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                >
+                <Button variant="outline" size="lg" className="bg-white border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                   <Gift className="w-5 h-5 mr-2" />
                   Join the Giveaway
                 </Button>
@@ -117,7 +113,7 @@ const GiveawaySection = () => {
               
               {/* Drone Image */}
               <div className="relative">
-                <img src={droneGiveawayImg} alt="Win a ₹45K Drone" className="relative w-full max-w-md lg:max-w-lg animate-float border-primary-foreground" style={{
+                <img src={droneGiveawayImg} alt="Win a ₹45K Drone" className="relative w-full max-w-md lg:max-w-lg animate-float border-white" style={{
                 filter: 'drop-shadow(0 0 30px hsl(var(--primary) / 0.4)) drop-shadow(0 0 60px hsl(var(--gold) / 0.3)) drop-shadow(0 25px 50px rgba(0,0,0,0.5))'
               }} />
                 
