@@ -82,9 +82,7 @@ const RegistrationSection = () => {
               <span className="text-foreground text-5xl">Secure your </span>
               <span className="text-primary italic text-5xl">spot</span>
             </h2>
-            <p className="body-lg text-muted-foreground opacity-0-initial animate-fade-up delay-200">
-              200 seats. One day. Your future.
-            </p>
+            
           </div>
           
           {/* Registration Form Card */}
