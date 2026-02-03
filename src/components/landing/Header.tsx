@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Heart } from "lucide-react";
-import logo from "@/assets/wiseadmit-logo-new.png";
+import logoDark from "@/assets/logo-dark.svg";
+import logoLight from "@/assets/logo-light.svg";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -24,16 +25,16 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300 ${
-        isScrolled
-          ? "bg-card shadow-md"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300 bg-[white]`}
     >
       <div className="container-wide flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="flex items-center">
-          <img src={logo} alt="WiseAdmit" className="h-7 md:h-9" />
+        <a
+          href="https://wiseadmit.io"
+          target="_blank"
+          className="flex items-center"
+        >
+          <img src={logoDark} alt="WiseAdmit" className="h-12 md:h-15" />
         </a>
 
         {/* Navigation - Desktop */}
@@ -42,11 +43,7 @@ const Header = () => {
             <a
               key={item.label}
               href={item.href}
-              className={`transition-colors font-medium text-sm ${
-                isScrolled
-                  ? "text-foreground/80 hover:text-foreground"
-                  : "text-white/80 hover:text-white"
-              }`}
+              className={`transition-colors font-medium text-sm text-foreground hover:text-[#111518]`}
             >
               {item.label}
             </a>

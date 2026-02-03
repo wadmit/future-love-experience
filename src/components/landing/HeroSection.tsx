@@ -69,11 +69,11 @@ const HeroSection = () => {
         
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10 opacity-0-initial animate-fade-up delay-500">
-          <Button variant="hero" size="xl" className="btn-glow">
-            Register for Event
+          <Button variant="hero" size="xl" className="btn-glow" asChild>
+            <a href="#register">Register for Event</a>
           </Button>
-          <Button variant="heroOutline" size="xl">
-            Become Event Ambassador
+          <Button variant="heroOutline" size="xl" asChild>
+            <a href="#register">Become Event Ambassador</a>
           </Button>
         </div>
         

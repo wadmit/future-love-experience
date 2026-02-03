@@ -1,132 +1,174 @@
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Gift } from "lucide-react";
+import {
+  Gift,
+  Instagram,
+  Share2,
+  MessageCircle,
+  ClipboardCheck,
+} from "lucide-react";
 import droneGiveawayImg from "@/assets/drone-giveaway-new.png";
-const steps = [{
-  emoji: "💕",
-  title: "Follow WiseAdmit",
-  description: "Follow @wiseadmit on Instagram"
-}, {
-  emoji: "📲",
-  title: "Share the Event",
-  description: "Share the event post on your story"
-}, {
-  emoji: "💬",
-  title: "Comment & Tag",
-  description: "Tag 3 friends who should attend"
-}, {
-  emoji: "👥",
-  title: "Take WiseScore",
-  description: "Take the WiseScore assessment at the event"
-}];
+import chinaSkyline from "@/assets/china-skyline.jpg";
+
+const steps = [
+  {
+    icon: Instagram,
+    title: "Follow WiseAdmit",
+    description: "@wiseadmit on Instagram",
+  },
+  {
+    icon: Share2,
+    title: "Share the event",
+    description: "Post on your story",
+  },
+  {
+    icon: MessageCircle,
+    title: "Comment & tag",
+    description: "Tag 3 friends",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "Take WiseScore",
+    description: "At the event",
+  },
+];
+
 const GiveawaySection = () => {
-  return <section id="giveaway" className="section-padding text-white relative overflow-hidden" style={{
-    backgroundColor: '#001D46'
-  }}>
-      {/* Decorative floating dots */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(30)].map((_, i) => <div key={i} className="absolute w-1.5 h-1.5 bg-primary-foreground/30 rounded-full" style={{
-        top: `${Math.random() * 100}%`,
-        left: `${Math.random() * 100}%`,
-        animation: `float ${3 + Math.random() * 2}s ease-in-out infinite`,
-        animationDelay: `${Math.random() * 2}s`
-      }} />)}
+  return (
+    <section
+      id="giveaway"
+      className="section-padding text-white relative overflow-hidden"
+      style={{ backgroundColor: "#001D46" }}
+    >
+      <div className="absolute inset-0">
+        <img
+          src={chinaSkyline}
+          alt="Shanghai skyline with traditional and modern architecture"
+          className="w-full h-full object-cover"
+        />
+        {/* Gradient Overlay */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(135deg, hsl(222 47% 11% / 0.88) 0%, hsl(6 78% 57% / 0.35) 100%)",
+          }}
+        />
       </div>
-      
+
       <div className="container-wide relative z-10">
         <div className="max-w-6xl mx-auto">
-          {/* Two Column Layout */}
-          <div className="grid lg:grid-cols-[1.2fr_0.9fr] gap-8 lg:gap-12 items-center">
-            {/* Left Column - Text & Steps */}
-            <div className="order-2 lg:order-1">
-              {/* Badge */}
-              <Badge className="bg-gold text-gold-foreground mb-4 text-sm px-4 py-1.5 opacity-0-initial animate-fade-up">
-                🎁 Mega Giveaway
-              </Badge>
-              
-              {/* Headline */}
-              <h2 className="display-lg mb-4 opacity-0-initial animate-fade-up delay-100">
-                Win a 45K Drone!
-              </h2>
-              
-              {/* Description */}
-              <p className="body-lg text-white/80 mb-8 opacity-0-initial animate-fade-up delay-200">
-                The more you engage, the more chances you get to win!
-              </p>
-              
-              {/* How to Enter */}
-              <h3 className="text-lg font-semibold text-white/90 mb-4 opacity-0-initial animate-fade-up delay-300">
-                How to Enter:
-              </h3>
-              
-              {/* Vertical Steps */}
-              <div className="space-y-3 mb-8">
-                {steps.map((step, index) => {
-                const isFollowStep = step.title === "Follow WiseAdmit";
+          <div className="grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 items-center">
+            {/* Left: Content */}
+            <div className="order-2 lg:order-1 space-y-8">
+              <div>
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-sm font-medium text-gold mb-5 opacity-0-initial animate-fade-up">
+                  <Gift className="w-4 h-4" />
+                  Giveaway
+                </span>
+                <h2 className="display-lg text-white mb-3 opacity-0-initial animate-fade-up delay-100">
+                  Win a free trip to China
+                </h2>
+                <p className="body-lg text-white/75 max-w-md opacity-0-initial animate-fade-up delay-200">
+                  2 lucky students win a 14-day China trip. Engage to earn more
+                  entries.
+                </p>
+              </div>
 
-                // Format description with styled @wiseadmit for the follow step
-                const formattedDescription = isFollowStep ? <>
-                      Follow <span className="text-primary underline">@wiseadmit</span> on Instagram
-                    </> : step.description;
-                const content = <>
-                      <span className="text-2xl flex-shrink-0">{step.emoji}</span>
-                      <div>
-                        <h4 className="font-display text-base font-bold text-white">
+              {/* Prize highlight */}
+              <div className="rounded-2xl border border-white/20 bg-white/5 backdrop-blur-sm p-5 max-w-sm opacity-0-initial animate-fade-up delay-300">
+                <p className="font-display font-bold text-white text-lg">
+                  2 winners
+                </p>
+                <p className="text-gold font-semibold text-xl">
+                  FREE 14-day China trip
+                </p>
+              </div>
+
+              {/* Steps */}
+              <div className="space-y-2 opacity-0-initial animate-fade-up delay-400">
+                {steps.map((step, index) => {
+                  const Icon = step.icon;
+                  const isFollow = step.title === "Follow WiseAdmit";
+                  const content = (
+                    <>
+                      <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center flex-shrink-0">
+                        <Icon className="w-5 h-5 text-primary" />
+                      </div>
+                      <div className="min-w-0">
+                        <h4 className="font-semibold text-white text-sm">
                           {step.title}
                         </h4>
-                        <p className="text-sm text-white/70">
-                          {formattedDescription}
+                        <p className="text-sm text-white/60">
+                          {isFollow ? (
+                            <>
+                              <a
+                                href="https://instagram.com/wiseadmitedu"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-primary hover:underline"
+                              >
+                                @wiseadmit
+                              </a>{" "}
+                              on Instagram
+                            </>
+                          ) : (
+                            step.description
+                          )}
                         </p>
                       </div>
-                    </>;
-                return isFollowStep ? <a key={step.title} href="https://instagram.com/wiseadmit" target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/15 transition-colors duration-300 opacity-0-initial animate-fade-up cursor-pointer" style={{
-                  animationDelay: `${(index + 4) * 100}ms`
-                }}>
+                    </>
+                  );
+                  return isFollow ? (
+                    <a
+                      key={step.title}
+                      href="https://instagram.com/wiseadmitedu"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-4 rounded-xl p-3 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-200 cursor-pointer"
+                      style={{ animationDelay: `${(index + 5) * 80}ms` }}
+                    >
                       {content}
-                    </a> : <div key={step.title} className="flex items-start gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/15 transition-colors duration-300 opacity-0-initial animate-fade-up" style={{
-                  animationDelay: `${(index + 4) * 100}ms`
-                }}>
+                    </a>
+                  ) : (
+                    <div
+                      key={step.title}
+                      className="flex items-center gap-4 rounded-xl p-3 bg-white/5 border border-white/10"
+                      style={{ animationDelay: `${(index + 5) * 80}ms` }}
+                    >
                       {content}
-                    </div>;
-              })}
+                    </div>
+                  );
+                })}
               </div>
-              
-              {/* Button */}
-              <div className="flex flex-col sm:flex-row gap-4 opacity-0-initial animate-fade-up delay-700">
-                <Button variant="outline" size="lg" className="bg-white border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                  <Gift className="w-5 h-5 mr-2" />
-                  Join the Giveaway
+
+              <div className="pt-2 opacity-0-initial animate-fade-up delay-700">
+                <Button variant="hero" size="lg" className="btn-glow" asChild>
+                  <a href="#register">
+                    <Gift className="w-5 h-5 mr-2" />
+                    Join the giveaway
+                  </a>
                 </Button>
-              </div>
-              
-              <p className="text-sm text-white/60 mt-4 opacity-0-initial animate-fade-up delay-800">
-                🎁 Already 200+ participants • 🎉 Winner announced on Feb 14
-              </p>
-            </div>
-            
-            {/* Right Column - Drone Image */}
-            <div className="order-1 lg:order-2 relative opacity-0-initial animate-fade-up flex items-start justify-end border-primary-foreground">
-              {/* Multi-layer glow effects behind drone */}
-              <div className="absolute inset-0 bg-cyan-500/40 blur-[80px] rounded-full scale-75 animate-pulse" />
-              <div className="absolute inset-0 bg-blue-400/30 blur-[60px] rounded-full scale-90" />
-              <div className="absolute inset-0 bg-cyan-400/25 blur-[100px] rounded-full scale-110" />
-              
-              {/* Drone Image */}
-              <div className="relative">
-                <img src={droneGiveawayImg} alt="Win a ₹45K Drone" className="relative w-full max-w-md lg:max-w-lg animate-float border-white" style={{
-                filter: 'drop-shadow(0 0 30px hsl(var(--primary) / 0.4)) drop-shadow(0 0 60px hsl(var(--gold) / 0.3)) drop-shadow(0 25px 50px rgba(0,0,0,0.5))'
-              }} />
-                
-                {/* Price Badge */}
-                <div className="absolute bottom-4 right-4 bg-gold text-gold-foreground rounded-xl px-4 py-2 shadow-lg">
-                  <div className="text-xl font-bold">₹45,000</div>
-                  <div className="text-xs opacity-80">Grand Prize Value</div>
-                </div>
+                <p className="text-sm text-white/50 mt-3">
+                  Winner announced Feb 14
+                </p>
               </div>
             </div>
+
+            {/* Right: Image */}
+            {/* <div className="order-1 lg:order-2 flex justify-center lg:justify-end opacity-0-initial animate-fade-up delay-200">
+              <div className="relative max-w-sm lg:max-w-md">
+                <img
+                  src={droneGiveawayImg}
+                  alt="Drone giveaway prize"
+                  className="w-full h-auto drop-shadow-2xl"
+                />
+              </div>
+            </div> */}
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default GiveawaySection;
