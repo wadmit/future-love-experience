@@ -76,7 +76,7 @@ const GiveawaySection = () => {
 
               {/* Prize highlight */}
               <div className="rounded-2xl border border-white/20 bg-white/5 backdrop-blur-sm py-3 px-5 max-w-sm opacity-0-initial animate-fade-up delay-300">
-                <p className="font-display font-bold text-white text-lg">
+                <p className="font-bold text-white text-lg">
                   2 winners
                 </p>
                 <p className="text-gold font-semibold text-xl">

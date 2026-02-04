@@ -15,7 +15,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
           {/* Brand Section */}
           <div>
-            <h3 className="font-display text-2xl font-bold text-card mb-4">
+            <h3 className="text-2xl font-bold text-card mb-4">
               WiseAdmit
             </h3>
             <p className="text-secondary-foreground/70 leading-relaxed mb-6">
@@ -53,7 +53,7 @@ const Footer = () => {
 
           {/* Contact Us */}
           <div>
-            <h4 className="font-display text-lg font-semibold text-card mb-6">
+            <h4 className="text-lg font-semibold text-card mb-6">
               Contact Us
             </h4>
             <div className="space-y-4 text-secondary-foreground/70">
@@ -84,7 +84,7 @@ const Footer = () => {
 
           {/* Event Details */}
           <div>
-            <h4 className="font-display text-lg font-semibold text-card mb-6">
+            <h4 className="text-lg font-semibold text-card mb-6">
               Event Details
             </h4>
             <div className="space-y-4 text-secondary-foreground/70">

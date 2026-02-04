@@ -93,7 +93,7 @@ const ExperienceSection = () => {
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                     <experience.icon className="w-5 h-5 text-primary" />
                   </div>
-                  <h3 className="font-display text-2xl lg:text-3xl font-bold text-foreground">
+                  <h3 className="text-2xl lg:text-3xl font-bold text-foreground">
                     {/* {experience.title} */}
                   </h3>
                 </div>

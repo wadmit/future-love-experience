@@ -8,7 +8,7 @@ const speakers = [
     name: "Dr. Rupesh Regmi",
     role: "CEO, Founder of WiseAdmit",
     image: rupeshImg,
-    featured: true,
+    featured: false,
     social: {
       linkedin: "https://www.linkedin.com/in/r4regmi",
       instagram: "https://www.instagram.com/dr.rupesh.ai",
@@ -18,7 +18,7 @@ const speakers = [
     name: "Swikar Sharma",
     role: "Content Creator",
     image: swikarImg,
-    featured: true,
+    featured: false,
     social: {
       linkedin: "https://www.linkedin.com/in/swikar-sharma-a37984173",
       instagram: "https://www.instagram.com/swikar.codes",
@@ -92,7 +92,7 @@ const SpeakersSection = () => {
 
               {/* Info */}
               <h3
-                className={`font-display text-xl font-bold mb-2 ${
+                className={`text-xl font-bold mb-2 ${
                   speaker.featured ? "text-primary" : "text-foreground"
                 }`}
               >

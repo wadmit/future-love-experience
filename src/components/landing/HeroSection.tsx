@@ -101,7 +101,7 @@ const HeroSection = () => {
               className="min-w-[140px] rounded-2xl border border-white/20 bg-white/10 px-8 py-5 text-center backdrop-blur-sm"
             >
               <p
-                className={`font-display text-3xl md:text-4xl font-bold tracking-tight ${stat.color}`}
+                className={`text-3xl md:text-4xl font-bold tracking-tight ${stat.color}`}
               >
                 {stat.value}
               </p>

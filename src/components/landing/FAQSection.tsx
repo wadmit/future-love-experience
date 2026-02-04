@@ -69,7 +69,7 @@ const FAQSection = () => {
               className="bg-card rounded-2xl border border-border/50 px-6 data-[state=open]:shadow-card transition-shadow duration-300 opacity-0-initial animate-fade-up"
               style={{ animationDelay: `${(index + 2) * 50}ms` }}
             >
-              <AccordionTrigger className="text-left font-display text-lg font-semibold text-foreground hover:text-primary py-6 hover:no-underline">
+              <AccordionTrigger className="text-left text-lg font-semibold text-foreground hover:text-primary py-6 hover:no-underline">
                 {faq.question}
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed pb-6">

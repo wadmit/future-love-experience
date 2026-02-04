@@ -26,7 +26,7 @@ const StickyRegistration = () => {
     <div className="fixed bottom-0 left-0 right-0 z-50 p-4 md:hidden animate-fade-up">
       <div className="bg-card rounded-2xl shadow-elevated border border-border/50 p-4 flex items-center gap-3">
         <div className="flex-1">
-          <p className="font-display font-bold text-foreground text-sm">Ready to join?</p>
+          <p className="font-bold text-foreground text-sm">Ready to join?</p>
           <p className="text-xs text-muted-foreground">Feb 14 • Limited spots</p>
         </div>
         <Button variant="cta" size="sm">
