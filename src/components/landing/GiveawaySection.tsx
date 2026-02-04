@@ -17,17 +17,17 @@ const steps = [
   },
   {
     icon: Share2,
-    title: "Share the event",
-    description: "Post on your story",
+    title: "Share your story",
+    description: "Check your WiseScore and Share in your story",
   },
   {
     icon: MessageCircle,
     title: "Comment & tag",
-    description: "Tag 3 friends",
+    description: "Tag 3 friends in the post",
   },
   {
     icon: ClipboardCheck,
-    title: "Take WiseScore",
+    title: "Check WiseScore",
     description: "At the event",
   },
 ];
