@@ -57,7 +57,10 @@ const SpeakersSection = () => {
             <span className="text-foreground text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
               Speakers
             </span>
-            <span className="text-foreground"> & </span>
+            <span className="text-foreground text-xl sm:text-2xl md:text-3xl lg:text-5xl">
+              {" "}
+              &{" "}
+            </span>
             <span className="text-primary text-xl sm:text-2xl md:text-3xl lg:text-5xl">
               Mentors
             </span>

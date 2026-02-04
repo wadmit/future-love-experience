@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Heart } from "lucide-react";
 import logoDark from "@/assets/logo-dark.svg";
 import logoLight from "@/assets/logo-light.svg";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -52,6 +53,12 @@ const Header = () => {
               {item.label}
             </a>
           ))}
+          <Link
+            to="/dashboard"
+            className="transition-colors font-medium text-xs lg:text-sm text-foreground hover:text-[#111518]"
+          >
+            Dashboard
+          </Link>
         </nav>
 
         {/* CTA */}
