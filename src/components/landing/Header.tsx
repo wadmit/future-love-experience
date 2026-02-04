@@ -53,12 +53,12 @@ const Header = () => {
               {item.label}
             </a>
           ))}
-          <Link
+          {/* <Link
             to="/dashboard"
             className="transition-colors font-medium text-xs lg:text-sm text-foreground hover:text-[#111518]"
           >
             Dashboard
-          </Link>
+          </Link> */}
         </nav>
 
         {/* CTA */}
