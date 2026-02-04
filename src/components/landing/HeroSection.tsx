@@ -89,7 +89,7 @@ const HeroSection = () => {
             <a href="#register">Register for Event</a>
           </Button>
           <Button variant="heroOutline" size="default" className="h-11 sm:h-12 sm:px-8 sm:text-base md:h-14 md:px-10 md:text-lg w-full sm:w-auto" asChild>
-            <a href="#register">Become Event Ambassador</a>
+            <a href="#register">Become Student Ambassador</a>
           </Button>
         </div>
 
