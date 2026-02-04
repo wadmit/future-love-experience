@@ -49,30 +49,30 @@ const faqs = [
 const FAQSection = () => {
   return (
     <section className="section-padding bg-background">
-      <div className="container-narrow">
+      <div className="container-narrow px-4 sm:px-6">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-muted text-muted-foreground text-sm font-semibold mb-4 opacity-0-initial animate-fade-up">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+          <span className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-muted text-muted-foreground text-xs sm:text-sm font-semibold mb-3 sm:mb-4 opacity-0-initial animate-fade-up">
             Got Questions?
           </span>
-          <h2 className="display-md text-foreground opacity-0-initial animate-fade-up delay-100">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground opacity-0-initial animate-fade-up delay-100">
             Frequently Asked Questions
           </h2>
         </div>
 
         {/* FAQ Accordion */}
-        <Accordion type="single" collapsible className="space-y-4">
+        <Accordion type="single" collapsible className="space-y-3 sm:space-y-4">
           {faqs.map((faq, index) => (
             <AccordionItem
               key={index}
               value={`item-${index}`}
-              className="bg-card rounded-2xl border border-border/50 px-6 data-[state=open]:shadow-card transition-shadow duration-300 opacity-0-initial animate-fade-up"
+              className="bg-card rounded-xl sm:rounded-2xl border border-border/50 px-4 sm:px-5 md:px-6 data-[state=open]:shadow-card transition-shadow duration-300 opacity-0-initial animate-fade-up"
               style={{ animationDelay: `${(index + 2) * 50}ms` }}
             >
-              <AccordionTrigger className="text-left text-lg font-semibold text-foreground hover:text-primary py-6 hover:no-underline">
+              <AccordionTrigger className="text-left text-base sm:text-lg font-semibold text-foreground hover:text-primary py-4 sm:py-5 md:py-6 hover:no-underline">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground leading-relaxed pb-6">
+              <AccordionContent className="text-muted-foreground text-sm sm:text-base leading-relaxed pb-4 sm:pb-5 md:pb-6">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>
@@ -80,7 +80,7 @@ const FAQSection = () => {
         </Accordion>
 
         {/* Contact CTA */}
-        <p className="text-center mt-10 text-muted-foreground opacity-0-initial animate-fade-up delay-500">
+        <p className="text-center mt-6 sm:mt-8 md:mt-10 text-sm sm:text-base text-muted-foreground opacity-0-initial animate-fade-up delay-500">
           Still have questions?{" "}
           <a
             target="_blank"

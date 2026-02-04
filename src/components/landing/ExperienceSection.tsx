@@ -49,21 +49,21 @@ const ExperienceSection = () => {
     >
       <div className="container-wide relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="display-lg text-foreground mb-6 opacity-0-initial animate-fade-up delay-100 text-4xl">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 md:mb-16 px-2">
+          <h2 className="display-lg text-foreground mb-4 sm:mb-6 opacity-0-initial animate-fade-up delay-100 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
             What You'll Experience
           </h2>
-          <p className="body-lg text-muted-foreground opacity-0-initial animate-fade-up delay-200 text-lg">
+          <p className="text-muted-foreground opacity-0-initial animate-fade-up delay-200 text-sm sm:text-base md:text-lg leading-relaxed">
             Hands-on cultural activities that bring Chinese tradition to life
           </p>
         </div>
 
         {/* Experience Items */}
-        <div className="space-y-8 lg:space-y-12">
+        <div className="space-y-8 sm:space-y-10 lg:space-y-12">
           {experiences.map((experience, index) => (
             <div
               key={experience.title}
-              className={`grid lg:grid-cols-2 gap-6 lg:gap-10 items-center opacity-0-initial animate-fade-up`}
+              className={`grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-10 items-center opacity-0-initial animate-fade-up`}
               style={{
                 animationDelay: `${(index + 3) * 100}ms`,
               }}
@@ -74,7 +74,7 @@ const ExperienceSection = () => {
                   experience.imageFirst ? "lg:order-1" : "lg:order-2"
                 }`}
               >
-                <div className="relative rounded-2xl overflow-hidden bg-muted aspect-[4/3] group">
+                <div className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-muted aspect-[4/3] group">
                   <img
                     src={experience.image}
                     alt={experience.title}
@@ -87,27 +87,27 @@ const ExperienceSection = () => {
               <div
                 className={`${
                   experience.imageFirst ? "lg:order-2" : "lg:order-1"
-                } flex flex-col justify-center`}
+                } flex flex-col justify-center px-1 sm:px-0`}
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <experience.icon className="w-5 h-5 text-primary" />
+                <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                    <experience.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                   </div>
-                  <h3 className="text-2xl lg:text-3xl font-bold text-foreground">
-                    {/* {experience.title} */}
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground">
+                    {experience.title}
                   </h3>
                 </div>
 
-                <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+                <p className="text-muted-foreground text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6">
                   {experience.description}
                 </p>
 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {experience.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-4 py-1.5 rounded-full bg-card border border-border text-sm text-foreground/80 hover:bg-primary/5 hover:border-primary/30 transition-colors duration-200"
+                      className="px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-card border border-border text-xs sm:text-sm text-foreground/80 hover:bg-primary/5 hover:border-primary/30 transition-colors duration-200"
                     >
                       {tag}
                     </span>

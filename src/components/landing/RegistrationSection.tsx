@@ -18,8 +18,11 @@ const registrationSchema = z.object({
   phone: z
     .string()
     .trim()
-    .min(10, "Phone number must be at least 10 digits")
-    .max(15, "Phone must be less than 15 characters"),
+    .min(10, "Phone must be 10 digits")
+    .refine(
+      (s) => /^9\d{9}$/.test(s.replace(/\D/g, "")),
+      "Phone must start with 9 and be 10 digits (e.g. 9812345678)"
+    ),
   college: z
     .string()
     .trim()
@@ -77,12 +80,30 @@ const RegistrationSection = () => {
     const payload = {
       full_name: formData.fullName,
       email: formData.email,
-      phone: formData.phone,
+      phone: formData.phone.replace(/\D/g, ""),
       college: formData.college,
       registration_type: formData.registrationType,
     };
 
     if (supabase) {
+      // Check if email or phone already registered (phone stored as digits only)
+      const { data: existing } = await supabase
+        .from("registrations")
+        .select("id")
+        .or(`email.eq.${formData.email},phone.eq.${payload.phone}`)
+        .limit(1);
+
+      if (existing && existing.length > 0) {
+        toast({
+          title: "Already registered",
+          description:
+            "This email or phone number is already registered for the event.",
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
       const { error } = await supabase.from("registrations").insert(payload);
       if (error) {
         toast({
@@ -102,7 +123,10 @@ const RegistrationSection = () => {
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email: formData.email }),
+            body: JSON.stringify({
+              email: formData.email,
+              name: formData.fullName,
+            }),
           }
         );
         if (!emailRes.ok) {
@@ -149,28 +173,32 @@ const RegistrationSection = () => {
       id="register"
       className="section-padding bg-muted/30 relative overflow-hidden"
     >
-      <div className="container-wide relative z-10">
+      <div className="container-wide relative z-10 px-4 sm:px-6">
         <div className="max-w-2xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-10">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4 tracking-widest opacity-0-initial animate-fade-up">
+          <div className="text-center mb-6 sm:mb-8 md:mb-10">
+            <span className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-semibold mb-3 sm:mb-4 tracking-widest opacity-0-initial animate-fade-up">
               Limited Seats
             </span>
-            <h2 className="display-lg mb-4 opacity-0-initial animate-fade-up delay-100">
-              <span className="text-foreground text-5xl">Secure your </span>
-              <span className="text-primary italic text-5xl">spot</span>
+            <h2 className="mb-3 sm:mb-4 opacity-0-initial animate-fade-up delay-100">
+              <span className="text-foreground text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
+                Secure your{" "}
+              </span>
+              <span className="text-primary italic text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
+                spot
+              </span>
             </h2>
           </div>
 
           {/* Registration Form Card */}
           <form
             onSubmit={handleSubmit}
-            className="bg-card rounded-2xl p-8 md:p-10 shadow-xl opacity-0-initial animate-fade-up delay-300"
+            className="bg-card rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 lg:p-10 shadow-xl opacity-0-initial animate-fade-up delay-300"
           >
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6 mb-4 sm:mb-6">
               {/* Full Name */}
               <div>
-                <label className="block text-foreground text-sm font-medium mb-2">
+                <label className="block text-foreground text-xs sm:text-sm font-medium mb-1.5 sm:mb-2">
                   Full Name
                 </label>
                 <input
@@ -180,7 +208,7 @@ const RegistrationSection = () => {
                   onChange={(e) =>
                     handleInputChange("fullName", e.target.value)
                   }
-                  className={`w-full px-4 py-3 rounded-lg bg-muted/50 border ${
+                  className={`w-full px-3 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base rounded-lg bg-muted/50 border ${
                     errors.fullName ? "border-destructive" : "border-border"
                   } text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-colors`}
                 />
@@ -193,7 +221,7 @@ const RegistrationSection = () => {
 
               {/* Email */}
               <div>
-                <label className="block text-foreground text-sm font-medium mb-2">
+                <label className="block text-foreground text-xs sm:text-sm font-medium mb-1.5 sm:mb-2">
                   Email
                 </label>
                 <input
@@ -201,7 +229,7 @@ const RegistrationSection = () => {
                   placeholder="you@example.com"
                   value={formData.email}
                   onChange={(e) => handleInputChange("email", e.target.value)}
-                  className={`w-full px-4 py-3 rounded-lg bg-muted/50 border ${
+                  className={`w-full px-3 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base rounded-lg bg-muted/50 border ${
                     errors.email ? "border-destructive" : "border-border"
                   } text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-colors`}
                 />
@@ -214,15 +242,15 @@ const RegistrationSection = () => {
 
               {/* Phone */}
               <div>
-                <label className="block text-foreground text-sm font-medium mb-2">
+                <label className="block text-foreground text-xs sm:text-sm font-medium mb-1.5 sm:mb-2">
                   Phone
                 </label>
                 <input
                   type="tel"
-                  placeholder="+977 98XXXXXXXX"
+                  placeholder="98XXXXXXXX"
                   value={formData.phone}
                   onChange={(e) => handleInputChange("phone", e.target.value)}
-                  className={`w-full px-4 py-3 rounded-lg bg-muted/50 border ${
+                  className={`w-full px-3 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base rounded-lg bg-muted/50 border ${
                     errors.phone ? "border-destructive" : "border-border"
                   } text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-colors`}
                 />
@@ -235,7 +263,7 @@ const RegistrationSection = () => {
 
               {/* College */}
               <div>
-                <label className="block text-foreground text-sm font-medium mb-2">
+                <label className="block text-foreground text-xs sm:text-sm font-medium mb-1.5 sm:mb-2">
                   College
                 </label>
                 <input
@@ -243,7 +271,7 @@ const RegistrationSection = () => {
                   placeholder="Your institution"
                   value={formData.college}
                   onChange={(e) => handleInputChange("college", e.target.value)}
-                  className={`w-full px-4 py-3 rounded-lg bg-muted/50 border ${
+                  className={`w-full px-3 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base rounded-lg bg-muted/50 border ${
                     errors.college ? "border-destructive" : "border-border"
                   } text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-colors`}
                 />
@@ -256,18 +284,18 @@ const RegistrationSection = () => {
             </div>
 
             {/* Registration Type */}
-            <div className="mb-8">
-              <label className="block text-foreground text-sm font-medium mb-3">
+            <div className="mb-6 sm:mb-8">
+              <label className="block text-foreground text-xs sm:text-sm font-medium mb-2 sm:mb-3">
                 I want to:
               </label>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {/* Attend Option */}
                 <button
                   type="button"
                   onClick={() =>
                     handleInputChange("registrationType", "attend")
                   }
-                  className={`p-4 rounded-xl border text-left transition-all duration-200 ${
+                  className={`p-3 sm:p-4 rounded-xl border text-left transition-all duration-200 ${
                     formData.registrationType === "attend"
                       ? "border-primary bg-primary/10"
                       : "border-border bg-muted/30 hover:border-muted-foreground/40"
@@ -307,7 +335,7 @@ const RegistrationSection = () => {
                       >
                         Attend
                       </p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-[10px] sm:text-xs text-muted-foreground">
                         Join as participant
                       </p>
                     </div>
@@ -320,7 +348,7 @@ const RegistrationSection = () => {
                   onClick={() =>
                     handleInputChange("registrationType", "ambassador")
                   }
-                  className={`p-4 rounded-xl border text-left transition-all duration-200 ${
+                  className={`p-3 sm:p-4 rounded-xl border text-left transition-all duration-200 ${
                     formData.registrationType === "ambassador"
                       ? "border-primary bg-primary/10"
                       : "border-border bg-muted/30 hover:border-muted-foreground/40"
@@ -360,7 +388,7 @@ const RegistrationSection = () => {
                       >
                         Ambassador
                       </p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-[10px] sm:text-xs text-muted-foreground">
                         Lead & earn rewards
                       </p>
                     </div>
@@ -373,8 +401,8 @@ const RegistrationSection = () => {
             <Button
               type="submit"
               variant="cta"
-              size="xl"
-              className="w-full group"
+              size="default"
+              className="w-full group h-11 sm:h-12 sm:text-base md:h-14 md:px-10 md:text-lg"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Registering..." : "Register — It's Free"}
@@ -382,7 +410,7 @@ const RegistrationSection = () => {
             </Button>
 
             {/* Disclaimer */}
-            <p className="text-center text-muted-foreground text-sm mt-6">
+            <p className="text-center text-muted-foreground text-xs sm:text-sm mt-4 sm:mt-6">
               By registering, you agree to receive event updates.
             </p>
           </form>

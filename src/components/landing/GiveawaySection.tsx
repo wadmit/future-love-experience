@@ -55,53 +55,53 @@ const GiveawaySection = () => {
         />
       </div>
 
-      <div className="container-wide relative z-10">
+      <div className="container-wide relative z-10 px-2 sm:px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-[1fr_1fr] gap-6 sm:gap-8 md:gap-10 lg:gap-16 items-center">
             {/* Left: Content */}
-            <div className="order-2 lg:order-1 space-y-8">
+            <div className="order-2 lg:order-1 space-y-5 sm:space-y-6 md:space-y-8">
               <div>
-                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-sm font-medium text-gold mb-5 opacity-0-initial animate-fade-up">
-                  <Gift className="w-4 h-4" />
+                <span className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-xs sm:text-sm font-medium text-gold mb-3 sm:mb-5 opacity-0-initial animate-fade-up">
+                  <Gift className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   Giveaway
                 </span>
-                <h2 className="display-lg text-white mb-3 opacity-0-initial animate-fade-up delay-100">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3 opacity-0-initial animate-fade-up delay-100">
                   Win a free trip to China
                 </h2>
-                <p className="body-lg text-white/75 max-w-md opacity-0-initial animate-fade-up delay-200">
+                <p className="text-white/75 max-w-md text-sm sm:text-base md:text-lg leading-relaxed opacity-0-initial animate-fade-up delay-200">
                   2 lucky students win a 14-day China trip. Engage to earn more
                   entries.
                 </p>
               </div>
 
               {/* Prize highlight */}
-              <div className="rounded-2xl border border-white/20 bg-white/5 backdrop-blur-sm py-3 px-5 max-w-sm opacity-0-initial animate-fade-up delay-300">
-                <p className="font-bold text-white text-lg">
+              <div className="rounded-xl sm:rounded-2xl border border-white/20 bg-white/5 backdrop-blur-sm py-2.5 px-4 sm:py-3 sm:px-5 max-w-sm opacity-0-initial animate-fade-up delay-300">
+                <p className="font-bold text-white text-base sm:text-lg">
                   2 winners
                 </p>
-                <p className="text-gold font-semibold text-xl">
+                <p className="text-gold font-semibold text-lg sm:text-xl">
                   FREE 14-day China trip
                 </p>
-                <p className="text-white/60 text-[10px]">
+                <p className="text-white/60 text-[10px] sm:text-xs mt-0.5">
                   *Air ticket and visa costs to be covered by students
                 </p>
               </div>
 
               {/* Steps */}
-              <div className="space-y-2 opacity-0-initial animate-fade-up delay-400">
+              <div className="space-y-1.5 sm:space-y-2 opacity-0-initial animate-fade-up delay-400">
                 {steps.map((step, index) => {
                   const Icon = step.icon;
                   const isFollow = step.title === "Follow WiseAdmit";
                   const content = (
                     <>
-                      <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center flex-shrink-0">
-                        <Icon className="w-5 h-5 text-primary" />
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-white/10 border border-white/20 flex items-center justify-center flex-shrink-0">
+                        <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                       </div>
                       <div className="min-w-0">
-                        <h4 className="font-semibold text-white text-sm">
+                        <h4 className="font-semibold text-white text-xs sm:text-sm">
                           {step.title}
                         </h4>
-                        <p className="text-sm text-white/60">
+                        <p className="text-xs sm:text-sm text-white/60">
                           {isFollow ? (
                             <>
                               <a
@@ -144,14 +144,14 @@ const GiveawaySection = () => {
                 })}
               </div>
 
-              <div className="pt-2 opacity-0-initial animate-fade-up delay-700">
-                <Button variant="hero" size="lg" className="btn-glow" asChild>
+              <div className="pt-1 sm:pt-2 opacity-0-initial animate-fade-up delay-700">
+                <Button variant="hero" size="default" className="btn-glow h-11 sm:h-12 sm:px-8 sm:text-base w-full sm:w-auto" asChild>
                   <a href="#register">
-                    <Gift className="w-5 h-5 mr-2" />
+                    <Gift className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2" />
                     Join the giveaway
                   </a>
                 </Button>
-                <p className="text-sm text-white/50 mt-3">
+                <p className="text-xs sm:text-sm text-white/50 mt-2 sm:mt-3">
                   Winner announced Feb 14
                 </p>
               </div>

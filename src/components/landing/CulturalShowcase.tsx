@@ -52,25 +52,25 @@ const experiences = [
 const CulturalShowcase = () => {
   return (
     <section className="section-padding bg-[white-80]" id="experience">
-      <div className="container mx-auto">
+      <div className="container-wide">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16 px-2">
+          <span className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-accent/10 text-accent text-xs sm:text-sm font-medium mb-3 sm:mb-4">
             Cultural Immersion
           </span>
-          <h2 className="display-lg mb-6 opacity-0-initial animate-fade-up delay-100">
-            <span className="text-foreground text-5xl">Experience </span>
-            <span className="text-primary text-3xl md:text-5xl">
+          <h2 className="display-lg mb-4 sm:mb-6 opacity-0-initial animate-fade-up delay-100">
+            <span className="text-foreground text-2xl sm:text-3xl md:text-4xl lg:text-5xl">Experience </span>
+            <span className="text-primary text-xl sm:text-2xl md:text-3xl lg:text-5xl">
               Chinese Culture{" "}
             </span>
           </h2>
-          <p className="max-w-2xl mx-auto text-muted-foreground text-lg">
+          <p className="max-w-2xl mx-auto text-muted-foreground text-sm sm:text-base md:text-lg">
             Hands-on activities that bring China's rich traditions to life
           </p>
         </div>
 
         {/* Experience grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 max-w-5xl mx-auto">
           {experiences.map((exp, index) => {
             const Icon = exp.icon;
             const hasImage = exp.image;
@@ -78,7 +78,7 @@ const CulturalShowcase = () => {
             return (
               <div
                 key={index}
-                className="group relative overflow-hidden rounded-3xl aspect-[4/3] hover-lift cursor-pointer"
+                className="group relative overflow-hidden rounded-2xl sm:rounded-3xl aspect-[4/3] hover-lift cursor-pointer"
               >
                 {/* Background */}
                 {hasImage ? (
@@ -95,30 +95,23 @@ const CulturalShowcase = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
 
                 {/* Content */}
-                <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                  {/* Tag */}
-                  {/* <div className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-card/80 backdrop-blur-sm border border-border/50">
-                    <span className="font-medium text-foreground">
-                      {exp.tag}
-                    </span>
-                  </div> */}
-
+                <div className="absolute inset-0 p-4 sm:p-5 md:p-6 flex flex-col justify-end">
                   {/* Icon */}
-                  <div className="w-12 h-12 rounded-xl bg-primary/20 backdrop-blur-sm border border-primary/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <Icon className="w-6 h-6 text-primary" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-primary/20 backdrop-blur-sm border border-primary/30 flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                   </div>
 
                   {/* Text */}
-                  <h3 className="text-2xl font-bold text-white mb-2">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 sm:mb-2">
                     {exp.title}
                   </h3>
-                  <p className="text-white text-sm leading-relaxed max-w-sm opacity-80">
+                  <p className="text-white text-xs sm:text-sm leading-relaxed max-w-sm opacity-80">
                     {exp.description}
                   </p>
                 </div>
 
                 {/* Hover border effect */}
-                <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-primary/50 transition-all duration-300" />
+                <div className="absolute inset-0 rounded-2xl sm:rounded-3xl border-2 border-transparent group-hover:border-primary/50 transition-all duration-300" />
               </div>
             );
           })}
