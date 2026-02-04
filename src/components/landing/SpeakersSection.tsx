@@ -26,7 +26,7 @@ const speakers = [
   },
   {
     name: "Sanju Dongol",
-    role: "Head of Growth of Partnership",
+    role: "Head of Growth & Partnership",
     image: sanjuImg,
     featured: false,
     social: {
@@ -54,9 +54,13 @@ const SpeakersSection = () => {
             Meet the Experts
           </span>
           <h2 className="display-lg mb-4 sm:mb-6 opacity-0-initial animate-fade-up delay-100">
-            <span className="text-foreground text-2xl sm:text-3xl md:text-4xl lg:text-5xl">Speakers</span>
+            <span className="text-foreground text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+              Speakers
+            </span>
             <span className="text-foreground"> & </span>
-            <span className="text-primary text-xl sm:text-2xl md:text-3xl lg:text-5xl">Mentors</span>
+            <span className="text-primary text-xl sm:text-2xl md:text-3xl lg:text-5xl">
+              Mentors
+            </span>
           </h2>
           <p className="text-muted-foreground text-sm sm:text-base md:text-lg leading-relaxed opacity-0-initial animate-fade-up delay-200">
             Learn from industry leaders who've guided thousands to success

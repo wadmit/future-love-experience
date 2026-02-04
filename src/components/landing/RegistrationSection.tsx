@@ -77,27 +77,57 @@ const RegistrationSection = () => {
       return;
     }
 
+    const emailNormalized = formData.email.trim().toLowerCase();
+    const phoneDigits = formData.phone.replace(/\D/g, "");
+
     const payload = {
       full_name: formData.fullName,
-      email: formData.email,
-      phone: formData.phone.replace(/\D/g, ""),
+      email: emailNormalized,
+      phone: phoneDigits,
       college: formData.college,
       registration_type: formData.registrationType,
     };
 
     if (supabase) {
-      // Check if email or phone already registered (phone stored as digits only)
-      const { data: existing } = await supabase
-        .from("registrations")
-        .select("id")
-        .or(`email.eq.${formData.email},phone.eq.${payload.phone}`)
-        .limit(1);
+      // Block duplicates: no duplicate email OR phone
+      const [emailCheck, phoneCheck] = await Promise.all([
+        supabase
+          .from("registrations")
+          .select("id")
+          .eq("email", payload.email)
+          .limit(1),
+        supabase
+          .from("registrations")
+          .select("id")
+          .eq("phone", payload.phone)
+          .limit(1),
+      ]);
 
-      if (existing && existing.length > 0) {
+      if (emailCheck.error || phoneCheck.error) {
+        toast({
+          title: "Unable to register",
+          description:
+            "We couldn't verify your registration right now. Please try again.",
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
+      const emailExists = (emailCheck.data?.length ?? 0) > 0;
+      const phoneExists = (phoneCheck.data?.length ?? 0) > 0;
+
+      if (emailExists || phoneExists) {
+        const description =
+          emailExists && phoneExists
+            ? "This email and phone number are already registered for the event."
+            : emailExists
+              ? "This email is already registered for the event."
+              : "This phone number is already registered for the event.";
+
         toast({
           title: "Already registered",
-          description:
-            "This email or phone number is already registered for the event.",
+          description,
           variant: "destructive",
         });
         setIsSubmitting(false);
@@ -124,7 +154,7 @@ const RegistrationSection = () => {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              email: formData.email,
+              email: payload.email,
               name: formData.fullName,
             }),
           }
@@ -143,19 +173,19 @@ const RegistrationSection = () => {
         } else {
           toast({
             title: "Registration Successful! 🎉",
-            description: `Thank you ${formData.fullName}! We'll send confirmation to ${formData.email}`,
+            description: `Thank you ${formData.fullName}! We'll send confirmation to ${payload.email}`,
           });
         }
       } else {
         toast({
           title: "Registration Successful! 🎉",
-          description: `Thank you ${formData.fullName}! We'll send confirmation to ${formData.email}`,
+          description: `Thank you ${formData.fullName}! We'll send confirmation to ${payload.email}`,
         });
       }
     } else {
       toast({
         title: "Registration Successful! 🎉",
-        description: `Thank you ${formData.fullName}! We'll send confirmation to ${formData.email}`,
+        description: `Thank you ${formData.fullName}! We'll send confirmation to ${payload.email}`,
       });
     }
 

@@ -18,8 +18,8 @@ const Header = () => {
 
   const navItems = [
     { label: "Experience", href: "#experience" },
-    { label: "Speakers", href: "#speakers" },
     { label: "Giveaway", href: "#giveaway" },
+    { label: "Speakers", href: "#speakers" },
     { label: "Register", href: "#register" },
   ];
 
@@ -34,7 +34,11 @@ const Header = () => {
           target="_blank"
           className="flex items-center shrink-0"
         >
-          <img src={logoDark} alt="WiseAdmit" className="h-9 sm:h-10 md:h-12 lg:h-14" />
+          <img
+            src={logoDark}
+            alt="WiseAdmit"
+            className="h-9 sm:h-10 md:h-12 lg:h-14"
+          />
         </a>
 
         {/* Navigation - Desktop */}
