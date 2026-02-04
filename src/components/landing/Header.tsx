@@ -53,7 +53,7 @@ const Header = () => {
         {/* CTA */}
         <Button variant="hero" size="default" className="hidden sm:flex gap-2">
           <Heart className="w-4 h-4" />
-          Register Now
+          <a href="#register">Register Now</a>
         </Button>
       </div>
     </header>

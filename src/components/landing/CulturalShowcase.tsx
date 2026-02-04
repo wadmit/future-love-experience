@@ -1,8 +1,17 @@
-import { Brush, Scissors, Languages, Camera } from "lucide-react";
+import {
+  Brush,
+  Scissors,
+  Languages,
+  Camera,
+  GraduationCap,
+  University,
+} from "lucide-react";
 import calligraphyImg from "@/assets/experience-calligraphy-new.jpg";
 import paperCuttingImg from "@/assets/experience-paper-cutting-new.webp";
 import chineseLessonImg from "@/assets/experience-chinese-lesson.jpg";
 import photoCornerImg from "@/assets/experience-photo-corner.jpg";
+import onSpotAdmissionsImg from "@/assets/on-spot-admission.png";
+import studentCounselingImg from "@/assets/student-parent-counsel.webp";
 const experiences = [
   {
     title: "Chinese Calligraphy",
@@ -21,19 +30,20 @@ const experiences = [
     tag: "剪纸",
   },
   {
-    title: "Mini Chinese Lesson",
-    description: "Learn essential Mandarin phrases and impress your friends",
-    image: chineseLessonImg,
-    icon: Languages,
+    title: "On spot Admissions & Scholarships",
+    description:
+      "Apply on the spot and get expert guidance on scholarships and eligibility",
+    image: onSpotAdmissionsImg,
+    icon: University,
     tag: "中文",
     gradient: true,
   },
   {
-    title: "Photo & Reel Corners",
+    title: "Student & Parent Counseling",
     description:
-      "Capture Instagram-worthy moments at our themed photo stations",
-    icon: Camera,
-    image: photoCornerImg,
+      "Personalized academic advice and dedicated support for students and parents",
+    icon: GraduationCap,
+    image: studentCounselingImg,
     tag: "",
     gradient: true,
   },
@@ -41,7 +51,7 @@ const experiences = [
 
 const CulturalShowcase = () => {
   return (
-    <section className="section-padding bg-[white-80]">
+    <section className="section-padding bg-[white-80]" id="experience">
       <div className="container mx-auto">
         {/* Section header */}
         <div className="text-center mb-16">
@@ -87,11 +97,11 @@ const CulturalShowcase = () => {
                 {/* Content */}
                 <div className="absolute inset-0 p-6 flex flex-col justify-end">
                   {/* Tag */}
-                  <div className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-card/80 backdrop-blur-sm border border-border/50">
+                  {/* <div className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-card/80 backdrop-blur-sm border border-border/50">
                     <span className="font-medium text-foreground">
                       {exp.tag}
                     </span>
-                  </div>
+                  </div> */}
 
                   {/* Icon */}
                   <div className="w-12 h-12 rounded-xl bg-primary/20 backdrop-blur-sm border border-primary/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">

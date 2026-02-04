@@ -83,7 +83,8 @@ const FAQSection = () => {
         <p className="text-center mt-10 text-muted-foreground opacity-0-initial animate-fade-up delay-500">
           Still have questions?{" "}
           <a
-            href="mailto:info@wiseadmit.com"
+            target="_blank"
+            href="https://www.wiseadmit.io/help-center"
             className="text-primary font-medium hover:underline"
           >
             Contact us

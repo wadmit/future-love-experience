@@ -5,26 +5,28 @@ import sanjuImg from "@/assets/sanju.png";
 import peggyImg from "@/assets/peggy.png";
 const speakers = [
   {
-    name: "Rupesh Regmi",
-    role: "Vision, China Opportunity & Decision-Making",
+    name: "Dr. Rupesh Regmi",
+    role: "CEO, Founder of WiseAdmit",
     image: rupeshImg,
     featured: true,
     social: {
       linkedin: "https://www.linkedin.com/in/r4regmi",
+      instagram: "https://www.instagram.com/dr.rupesh.ai",
     },
   },
   {
     name: "Swikar Sharma",
-    role: "Content Creation & Future Skills",
+    role: "Content Creator",
     image: swikarImg,
     featured: true,
     social: {
       linkedin: "https://www.linkedin.com/in/swikar-sharma-a37984173",
+      instagram: "https://www.instagram.com/swikar.codes",
     },
   },
   {
     name: "Sanju Dongol",
-    role: "Scholarships & Clarity",
+    role: "Head of Growth of Partnership",
     image: sanjuImg,
     featured: false,
     social: {
@@ -33,12 +35,10 @@ const speakers = [
   },
   {
     name: "Mrs. Jiejun Chen (Peggy)",
-    role: "China, Culture & Mini Lesson",
+    role: "Director of Admission",
     image: peggyImg,
     featured: false,
-    social: {
-      linkedin: "#",
-    },
+    social: {},
   },
 ];
 const SpeakersSection = () => {
@@ -104,12 +104,22 @@ const SpeakersSection = () => {
 
               {/* Social Icons */}
               <div className="flex justify-center gap-4">
-                <a
-                  href={speaker.social.linkedin}
-                  className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-colors duration-200"
-                >
-                  <Linkedin className="w-4 h-4 text-muted-foreground" />
-                </a>
+                {speaker.social.linkedin && (
+                  <a
+                    href={speaker.social.linkedin}
+                    className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-colors duration-200"
+                  >
+                    <Linkedin className="w-4 h-4 text-muted-foreground" />
+                  </a>
+                )}
+                {speaker.social.instagram && (
+                  <a
+                    href={speaker.social.instagram}
+                    className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-colors duration-200"
+                  >
+                    <Instagram className="w-4 h-4 text-muted-foreground" />
+                  </a>
+                )}
               </div>
             </div>
           ))}

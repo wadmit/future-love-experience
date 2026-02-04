@@ -75,12 +75,15 @@ const GiveawaySection = () => {
               </div>
 
               {/* Prize highlight */}
-              <div className="rounded-2xl border border-white/20 bg-white/5 backdrop-blur-sm p-5 max-w-sm opacity-0-initial animate-fade-up delay-300">
+              <div className="rounded-2xl border border-white/20 bg-white/5 backdrop-blur-sm py-3 px-5 max-w-sm opacity-0-initial animate-fade-up delay-300">
                 <p className="font-display font-bold text-white text-lg">
                   2 winners
                 </p>
                 <p className="text-gold font-semibold text-xl">
                   FREE 14-day China trip
+                </p>
+                <p className="text-white/60 text-[10px]">
+                  *Air ticket and visa costs to be covered by students
                 </p>
               </div>
 
@@ -124,7 +127,7 @@ const GiveawaySection = () => {
                       href="https://instagram.com/wiseadmitedu"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-4 rounded-xl p-3 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-200 cursor-pointer"
+                      className="flex items-center gap-4 rounded-xl p-3 bg-black/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-200 cursor-pointer"
                       style={{ animationDelay: `${(index + 5) * 80}ms` }}
                     >
                       {content}
@@ -132,7 +135,7 @@ const GiveawaySection = () => {
                   ) : (
                     <div
                       key={step.title}
-                      className="flex items-center gap-4 rounded-xl p-3 bg-white/5 border border-white/10"
+                      className="flex items-center gap-4 rounded-xl p-3 bg-black/5 border border-white/10"
                       style={{ animationDelay: `${(index + 5) * 80}ms` }}
                     >
                       {content}

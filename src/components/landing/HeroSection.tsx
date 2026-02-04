@@ -79,9 +79,7 @@ const HeroSection = () => {
           </div>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm">
             <MapPin className="w-5 h-5 text-primary" />
-            <span className="text-white font-medium text-base">
-              Landmark Hotel, Chitwan
-            </span>
+            <span className="text-white font-medium text-base">Chitwan</span>
           </div>
         </div>
 
