@@ -14,5 +14,6 @@ COMMENT ON COLUMN registrations.notes IS 'Free-text notes';
 COMMENT ON COLUMN registrations.updated_by IS 'Email of dashboard user who last updated this row';
 COMMENT ON COLUMN registrations.updated_at IS 'When the row was last updated';
 
--- If you use RLS, allow anon to update (e.g. for dashboard editors):
+-- If you use RLS, allow anon to update and delete (e.g. for dashboard editors):
 -- CREATE POLICY "Allow anon update registrations" ON registrations FOR UPDATE TO anon USING (true) WITH CHECK (true);
+-- CREATE POLICY "Allow anon delete registrations" ON registrations FOR DELETE TO anon USING (true);

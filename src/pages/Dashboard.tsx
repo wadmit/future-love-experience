@@ -10,10 +10,12 @@ import {
   Pencil,
   RefreshCw,
   Search,
+  Trash2,
 } from "lucide-react";
 
 import { supabase } from "@/lib/supabase";
 import { getAuthEmail, logout } from "@/lib/auth";
+import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -28,6 +30,16 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import {
   Table,
   TableBody,
@@ -128,6 +140,7 @@ function formatCreatedAt(value: string | null) {
 function Dashboard() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const { toast } = useToast();
   const [search, setSearch] = useState("");
   const [filterContacted, setFilterContacted] = useState<"all" | "yes" | "no">(
     "all"
@@ -135,7 +148,12 @@ function Dashboard() {
   const [filterAttendance, setFilterAttendance] = useState<
     "all" | AttendanceStatus
   >("all");
+  const [filterType, setFilterType] = useState<
+    "all" | "attend" | "ambassador"
+  >("all");
   const [editingRow, setEditingRow] = useState<RegistrationRow | null>(null);
+  const [deletingRow, setDeletingRow] = useState<RegistrationRow | null>(null);
+  const [deleting, setDeleting] = useState(false);
   const [editContacted, setEditContacted] = useState(false);
   const [editAttendance, setEditAttendance] = useState<AttendanceStatus | "">(
     ""
@@ -186,6 +204,27 @@ function Dashboard() {
     }
     queryClient.invalidateQueries({ queryKey: ["registrations"] });
     closeEdit();
+  };
+
+  const handleDelete = async () => {
+    if (!deletingRow || !supabase) return;
+    setDeleting(true);
+    const { error } = await supabase
+      .from("registrations")
+      .delete()
+      .eq("id", deletingRow.id);
+    setDeleting(false);
+    if (error) {
+      toast({
+        title: "Delete failed",
+        description: error.message,
+        variant: "destructive",
+      });
+      return;
+    }
+    setDeletingRow(null);
+    queryClient.invalidateQueries({ queryKey: ["registrations"] });
+    toast({ title: "Registration deleted" });
   };
 
   const query = useQuery({
@@ -263,8 +302,13 @@ function Dashboard() {
     if (filterAttendance !== "all") {
       rows = rows.filter((r) => r.attendance_status === filterAttendance);
     }
+    if (filterType !== "all") {
+      rows = rows.filter(
+        (r) => (r.registration_type ?? "").toLowerCase() === filterType
+      );
+    }
     return rows;
-  }, [query.data?.rows, search, filterContacted, filterAttendance]);
+  }, [query.data?.rows, search, filterContacted, filterAttendance, filterType]);
 
   return (
     <main className="min-h-screen bg-background">
@@ -496,6 +540,24 @@ function Dashboard() {
                   )}
                 </div>
               </div>
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-medium text-muted-foreground shrink-0">
+                  Type:
+                </span>
+                <div className="flex flex-wrap gap-1">
+                  {(["all", "attend", "ambassador"] as const).map((v) => (
+                    <Button
+                      key={v}
+                      type="button"
+                      variant={filterType === v ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setFilterType(v)}
+                    >
+                      {v === "all" ? "All" : v === "attend" ? "Attend" : "Ambassador"}
+                    </Button>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
@@ -577,7 +639,7 @@ function Dashboard() {
                       <TableCell className="whitespace-nowrap">
                         {formatCreatedAt(r.created_at)}
                       </TableCell>
-                      <TableCell>
+                      <TableCell className="flex items-center gap-1">
                         <Button
                           type="button"
                           variant="ghost"
@@ -587,6 +649,16 @@ function Dashboard() {
                         >
                           <Pencil className="w-4 h-4" />
                         </Button>
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => setDeletingRow(r)}
+                          aria-label="Delete"
+                          className="text-destructive hover:text-destructive hover:bg-destructive/10"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </Button>
                       </TableCell>
                     </TableRow>
                   ))
@@ -594,6 +666,35 @@ function Dashboard() {
               </TableBody>
             </Table>
           </div>
+
+          <AlertDialog
+            open={!!deletingRow}
+            onOpenChange={(open) => !open && !deleting && setDeletingRow(null)}
+          >
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Delete registration?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  This will permanently remove{" "}
+                  {deletingRow?.full_name || deletingRow?.email || "this row"}{" "}
+                  from the list. This action cannot be undone.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel disabled={deleting}>Cancel</AlertDialogCancel>
+                <AlertDialogAction
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleDelete();
+                  }}
+                  disabled={deleting}
+                  className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                >
+                  {deleting ? "Deleting…" : "Delete"}
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
 
           <Dialog
             open={!!editingRow}
