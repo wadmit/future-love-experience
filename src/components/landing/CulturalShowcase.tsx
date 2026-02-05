@@ -8,6 +8,8 @@ import {
 } from "lucide-react";
 import calligraphyImg from "@/assets/experience-calligraphy-new.jpg";
 import paperCuttingImg from "@/assets/experience-paper-cutting-new.webp";
+// import calligraphyImg from "@/assets/calligraphy.png";
+// import paperCuttingImg from "@/assets/papercutting.webp";
 import chineseLessonImg from "@/assets/experience-chinese-lesson.jpg";
 import photoCornerImg from "@/assets/experience-photo-corner.jpg";
 import onSpotAdmissionsImg from "@/assets/on-spot-admission.png";
