@@ -24,7 +24,7 @@ const experiences = [
   {
     title: "Paper Cutting Art",
     description:
-      "Create intricate zodiac patterns with traditional red paper cutting techniques",
+      "Create beautiful patterns with traditional red paper cutting techniques",
     image: paperCuttingImg,
     icon: Scissors,
     tag: "剪纸",
@@ -59,7 +59,9 @@ const CulturalShowcase = () => {
             Cultural Immersion
           </span>
           <h2 className="display-lg mb-4 sm:mb-6 opacity-0-initial animate-fade-up delay-100">
-            <span className="text-foreground text-2xl sm:text-3xl md:text-4xl lg:text-5xl">Experience </span>
+            <span className="text-foreground text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+              Experience{" "}
+            </span>
             <span className="text-primary text-xl sm:text-2xl md:text-3xl lg:text-5xl">
               Chinese Culture{" "}
             </span>

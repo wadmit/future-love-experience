@@ -17,7 +17,7 @@ const experiences = [
     icon: Scissors,
     title: "Paper Cutting (剪纸)",
     description:
-      "Create intricate paper cutting art designs using this ancient art of Chinese paper cutting.",
+      "Create beautiful patterns with traditional red paper cutting techniques.",
     image: paperCuttingImg,
     tags: ["Red Paper", "Fancy Patterns", "Festival Designs"],
     imageFirst: false,
