@@ -62,6 +62,7 @@ type RegistrationRow = {
   contacted: boolean | null;
   attendance_status: AttendanceStatus | null;
   parents_attending: boolean | null;
+  parent_phone: string | null;
   notes: string | null;
   updated_by: string | null;
   updated_at: string | null;
@@ -99,6 +100,7 @@ function downloadCsv(filename: string, rows: RegistrationRow[]) {
     "contacted",
     "attendance_status",
     "parents_attending",
+    "parent_phone",
     "notes",
     "updated_by",
     "updated_at",
@@ -239,7 +241,7 @@ function Dashboard() {
       const res = await supabase!
         .from("registrations")
         .select(
-          "id, full_name, email, phone, college, registration_type, created_at, contacted, attendance_status, parents_attending, notes, updated_by, updated_at",
+          "id, full_name, email, phone, college, registration_type, created_at, contacted, attendance_status, parents_attending, parent_phone, notes, updated_by, updated_at",
           { count: "exact" }
         )
         .order("created_at", { ascending: false })
@@ -645,6 +647,7 @@ function Dashboard() {
                   <TableHead>College</TableHead>
                   <TableHead>Type</TableHead>
                   <TableHead>Parents</TableHead>
+                  <TableHead>Parent phone</TableHead>
                   <TableHead>Contacted</TableHead>
                   <TableHead>Status</TableHead>
                   <TableHead>Notes</TableHead>
@@ -656,13 +659,13 @@ function Dashboard() {
               <TableBody>
                 {query.isLoading ? (
                   <TableRow>
-                    <TableCell colSpan={12} className="text-muted-foreground">
+                    <TableCell colSpan={13} className="text-muted-foreground">
                       Loading…
                     </TableCell>
                   </TableRow>
                 ) : filteredRows.length === 0 ? (
                   <TableRow>
-                    <TableCell colSpan={12} className="text-muted-foreground">
+                    <TableCell colSpan={13} className="text-muted-foreground">
                       No registrations found.
                     </TableCell>
                   </TableRow>
@@ -686,6 +689,9 @@ function Dashboard() {
                         ) : (
                           <span className="text-muted-foreground">No</span>
                         )}
+                      </TableCell>
+                      <TableCell className="whitespace-nowrap">
+                        {r.parent_phone || "—"}
                       </TableCell>
                       <TableCell>
                         {r.contacted ? (

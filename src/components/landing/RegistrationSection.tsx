@@ -5,33 +5,44 @@ import { ArrowRight } from "lucide-react";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/lib/supabase";
-const registrationSchema = z.object({
-  fullName: z
-    .string()
-    .trim()
-    .min(1, "Name is required")
-    .max(100, "Name must be less than 100 characters"),
-  email: z
-    .string()
-    .trim()
-    .email("Invalid email address")
-    .max(255, "Email must be less than 255 characters"),
-  phone: z
-    .string()
-    .trim()
-    .min(10, "Phone must be 10 digits")
-    .refine(
-      (s) => /^9\d{9}$/.test(s.replace(/\D/g, "")),
-      "Phone must start with 9 and be 10 digits (e.g. 9812345678)",
-    ),
-  college: z
-    .string()
-    .trim()
-    .min(1, "College/Institution is required")
-    .max(200, "College must be less than 200 characters"),
-  registrationType: z.enum(["attend", "ambassador"]),
-  parentsAttending: z.boolean(),
-});
+const registrationSchema = z
+  .object({
+    fullName: z
+      .string()
+      .trim()
+      .min(1, "Name is required")
+      .max(100, "Name must be less than 100 characters"),
+    email: z
+      .string()
+      .trim()
+      .email("Invalid email address")
+      .max(255, "Email must be less than 255 characters"),
+    phone: z
+      .string()
+      .trim()
+      .min(10, "Phone must be 10 digits")
+      .refine(
+        (s) => /^9\d{9}$/.test(s.replace(/\D/g, "")),
+        "Phone must start with 9 and be 10 digits (e.g. 9812345678)",
+      ),
+    college: z
+      .string()
+      .trim()
+      .min(1, "College/Institution is required")
+      .max(200, "College must be less than 200 characters"),
+    registrationType: z.enum(["attend", "ambassador"]),
+    parentsAttending: z.boolean(),
+    parentPhone: z.string().trim().max(20),
+  })
+  .refine(
+    (data) =>
+      !data.parentsAttending ||
+      /^9\d{9}$/.test((data.parentPhone || "").replace(/\D/g, "")),
+    {
+      message: "Parent phone must be 10 digits starting with 9 (e.g. 9812345678)",
+      path: ["parentPhone"],
+    },
+  );
 type RegistrationFormData = z.infer<typeof registrationSchema>;
 const RegistrationSection = () => {
   const { toast } = useToast();
@@ -42,6 +53,7 @@ const RegistrationSection = () => {
     college: "",
     registrationType: "attend",
     parentsAttending: false,
+    parentPhone: "",
   });
   const [errors, setErrors] = useState<
     Partial<Record<keyof RegistrationFormData, string>>
@@ -90,6 +102,9 @@ const RegistrationSection = () => {
       college: formData.college,
       registration_type: formData.registrationType,
       parents_attending: formData.parentsAttending,
+      parent_phone: formData.parentsAttending
+        ? (formData.parentPhone.replace(/\D/g, "") || null)
+        : null,
     };
 
     if (supabase) {
@@ -200,6 +215,7 @@ const RegistrationSection = () => {
       college: "",
       registrationType: "attend",
       parentsAttending: false,
+      parentPhone: "",
     });
     setIsSubmitting(false);
   };
@@ -318,22 +334,48 @@ const RegistrationSection = () => {
               </div>
             </div>
 
-            {/* Parents attending / bringing students */}
-            <div className="mb-4 sm:mb-6 flex items-center justify-between gap-4 rounded-xl border border-border bg-muted/30 p-3 sm:p-4">
-              <div>
-                <p className="text-foreground text-xs sm:text-sm font-medium">
-                  Will you be bringing your parents?
-                </p>
-                <p className="text-[10px] sm:text-xs text-muted-foreground mt-0.5">
-                  Bringing parents helps them understand your vision, goals, and your path to studying abroad.
-                </p>
+            {/* Parents attending / bringing parents */}
+            <div className="mb-4 sm:mb-6 rounded-xl border border-border bg-muted/30 p-3 sm:p-4 space-y-4">
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <p className="text-foreground text-xs sm:text-sm font-medium">
+                    Will you be bringing your parents?
+                  </p>
+                  <p className="text-[10px] sm:text-xs text-muted-foreground mt-0.5">
+                    Bringing parents helps them understand your vision, goals, and your path to studying abroad.
+                  </p>
+                </div>
+                <Switch
+                  checked={formData.parentsAttending}
+                  onCheckedChange={(checked) => {
+                    handleInputChange("parentsAttending", checked);
+                    if (!checked) handleInputChange("parentPhone", "");
+                  }}
+                />
               </div>
-              <Switch
-                checked={formData.parentsAttending}
-                onCheckedChange={(checked) =>
-                  handleInputChange("parentsAttending", checked)
-                }
-              />
+              {formData.parentsAttending && (
+                <div>
+                  <label className="block text-foreground text-xs sm:text-sm font-medium mb-1.5 sm:mb-2">
+                    Parent&apos;s phone number
+                  </label>
+                  <input
+                    type="tel"
+                    placeholder="98XXXXXXXX"
+                    value={formData.parentPhone}
+                    onChange={(e) =>
+                      handleInputChange("parentPhone", e.target.value)
+                    }
+                    className={`w-full px-3 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base rounded-lg bg-muted/50 border ${
+                      errors.parentPhone ? "border-destructive" : "border-border"
+                    } text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-colors`}
+                  />
+                  {errors.parentPhone && (
+                    <p className="text-destructive text-xs mt-1">
+                      {errors.parentPhone}
+                    </p>
+                  )}
+                </div>
+              )}
             </div>
 
             {/* Registration Type */}
