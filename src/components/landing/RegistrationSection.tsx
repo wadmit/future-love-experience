@@ -22,7 +22,7 @@ const registrationSchema = z.object({
     .min(10, "Phone must be 10 digits")
     .refine(
       (s) => /^9\d{9}$/.test(s.replace(/\D/g, "")),
-      "Phone must start with 9 and be 10 digits (e.g. 9812345678)"
+      "Phone must start with 9 and be 10 digits (e.g. 9812345678)",
     ),
   college: z
     .string()
@@ -49,7 +49,7 @@ const RegistrationSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const handleInputChange = (
     field: keyof RegistrationFormData,
-    value: string | boolean
+    value: string | boolean,
   ) => {
     setFormData((prev) => ({
       ...prev,
@@ -161,12 +161,12 @@ const RegistrationSection = () => {
               email: payload.email,
               name: formData.fullName,
             }),
-          }
+          },
         );
         if (!emailRes.ok) {
           console.warn(
             "Confirmation email could not be sent:",
-            emailRes.status
+            emailRes.status,
           );
           toast({
             title: "Registration saved",
@@ -318,14 +318,14 @@ const RegistrationSection = () => {
               </div>
             </div>
 
-            {/* Parents attending */}
+            {/* Parents attending / bringing students */}
             <div className="mb-4 sm:mb-6 flex items-center justify-between gap-4 rounded-xl border border-border bg-muted/30 p-3 sm:p-4">
               <div>
                 <p className="text-foreground text-xs sm:text-sm font-medium">
-                  Are your parents attending?
+                  Will you be bringing your parents?
                 </p>
                 <p className="text-[10px] sm:text-xs text-muted-foreground mt-0.5">
-                  Yes / No
+                  Bringing parents helps them understand your vision, goals, and your path to studying abroad.
                 </p>
               </div>
               <Switch
