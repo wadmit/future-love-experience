@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
 import { ArrowRight } from "lucide-react";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
@@ -29,6 +30,7 @@ const registrationSchema = z.object({
     .min(1, "College/Institution is required")
     .max(200, "College must be less than 200 characters"),
   registrationType: z.enum(["attend", "ambassador"]),
+  parentsAttending: z.boolean(),
 });
 type RegistrationFormData = z.infer<typeof registrationSchema>;
 const RegistrationSection = () => {
@@ -39,6 +41,7 @@ const RegistrationSection = () => {
     phone: "",
     college: "",
     registrationType: "attend",
+    parentsAttending: false,
   });
   const [errors, setErrors] = useState<
     Partial<Record<keyof RegistrationFormData, string>>
@@ -46,7 +49,7 @@ const RegistrationSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const handleInputChange = (
     field: keyof RegistrationFormData,
-    value: string
+    value: string | boolean
   ) => {
     setFormData((prev) => ({
       ...prev,
@@ -86,6 +89,7 @@ const RegistrationSection = () => {
       phone: phoneDigits,
       college: formData.college,
       registration_type: formData.registrationType,
+      parents_attending: formData.parentsAttending,
     };
 
     if (supabase) {
@@ -195,6 +199,7 @@ const RegistrationSection = () => {
       phone: "",
       college: "",
       registrationType: "attend",
+      parentsAttending: false,
     });
     setIsSubmitting(false);
   };
@@ -311,6 +316,24 @@ const RegistrationSection = () => {
                   </p>
                 )}
               </div>
+            </div>
+
+            {/* Parents attending */}
+            <div className="mb-4 sm:mb-6 flex items-center justify-between gap-4 rounded-xl border border-border bg-muted/30 p-3 sm:p-4">
+              <div>
+                <p className="text-foreground text-xs sm:text-sm font-medium">
+                  Are your parents attending?
+                </p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground mt-0.5">
+                  Yes / No
+                </p>
+              </div>
+              <Switch
+                checked={formData.parentsAttending}
+                onCheckedChange={(checked) =>
+                  handleInputChange("parentsAttending", checked)
+                }
+              />
             </div>
 
             {/* Registration Type */}

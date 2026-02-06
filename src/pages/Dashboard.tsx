@@ -61,6 +61,7 @@ type RegistrationRow = {
   created_at: string | null;
   contacted: boolean | null;
   attendance_status: AttendanceStatus | null;
+  parents_attending: boolean | null;
   notes: string | null;
   updated_by: string | null;
   updated_at: string | null;
@@ -97,6 +98,7 @@ function downloadCsv(filename: string, rows: RegistrationRow[]) {
     "created_at",
     "contacted",
     "attendance_status",
+    "parents_attending",
     "notes",
     "updated_by",
     "updated_at",
@@ -150,6 +152,9 @@ function Dashboard() {
   >("all");
   const [filterType, setFilterType] = useState<
     "all" | "attend" | "ambassador"
+  >("all");
+  const [filterParentsAttending, setFilterParentsAttending] = useState<
+    "all" | "yes" | "no"
   >("all");
   const [editingRow, setEditingRow] = useState<RegistrationRow | null>(null);
   const [deletingRow, setDeletingRow] = useState<RegistrationRow | null>(null);
@@ -234,7 +239,7 @@ function Dashboard() {
       const res = await supabase!
         .from("registrations")
         .select(
-          "id, full_name, email, phone, college, registration_type, created_at, contacted, attendance_status, notes, updated_by, updated_at",
+          "id, full_name, email, phone, college, registration_type, created_at, contacted, attendance_status, parents_attending, notes, updated_by, updated_at",
           { count: "exact" }
         )
         .order("created_at", { ascending: false })
@@ -307,8 +312,22 @@ function Dashboard() {
         (r) => (r.registration_type ?? "").toLowerCase() === filterType
       );
     }
+    if (filterParentsAttending !== "all") {
+      rows = rows.filter((r) =>
+        filterParentsAttending === "yes"
+          ? !!r.parents_attending
+          : !r.parents_attending
+      );
+    }
     return rows;
-  }, [query.data?.rows, search, filterContacted, filterAttendance, filterType]);
+  }, [
+    query.data?.rows,
+    search,
+    filterContacted,
+    filterAttendance,
+    filterType,
+    filterParentsAttending,
+  ]);
 
   return (
     <main className="min-h-screen bg-background">
@@ -489,73 +508,128 @@ function Dashboard() {
               />
             </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-muted-foreground shrink-0">
-                  Contacted:
-                </span>
-                <div className="flex flex-wrap gap-1">
-                  {(["all", "yes", "no"] as const).map((v) => (
-                    <Button
-                      key={v}
-                      type="button"
-                      variant={filterContacted === v ? "default" : "outline"}
-                      size="sm"
-                      onClick={() => setFilterContacted(v)}
-                    >
-                      {v === "all"
-                        ? "All"
-                        : v === "yes"
-                        ? "Contacted"
-                        : "Not contacted"}
-                    </Button>
-                  ))}
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-muted-foreground shrink-0">
-                  Status:
-                </span>
-                <div className="flex flex-wrap gap-1">
-                  <Button
-                    type="button"
-                    variant={filterAttendance === "all" ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setFilterAttendance("all")}
-                  >
-                    All
-                  </Button>
-                  {(Object.keys(ATTENDANCE_LABELS) as AttendanceStatus[]).map(
-                    (v) => (
-                      <Button
+            {/* Filters — segmented style, one active option per group */}
+            <div className="rounded-lg border border-border bg-muted/20 p-3 sm:p-4">
+              <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-3">
+                Filters
+              </p>
+              <div className="flex flex-wrap items-start gap-4 sm:gap-6">
+                {/* Contacted */}
+                <div className="flex flex-col gap-1.5">
+                  <span className="text-xs font-medium text-muted-foreground">
+                    Contacted
+                  </span>
+                  <div className="inline-flex rounded-lg border border-border bg-background p-0.5 shadow-sm">
+                    {(["all", "yes", "no"] as const).map((v, i) => (
+                      <button
                         key={v}
                         type="button"
-                        variant={filterAttendance === v ? "default" : "outline"}
-                        size="sm"
-                        onClick={() => setFilterAttendance(v)}
+                        onClick={() => setFilterContacted(v)}
+                        className={`
+                          px-3 py-1.5 text-sm font-medium transition-colors
+                          ${i === 0 ? "rounded-l-md" : ""}
+                          ${i === 2 ? "rounded-r-md" : ""}
+                          ${filterContacted === v
+                            ? "bg-primary text-primary-foreground shadow-sm"
+                            : "bg-transparent text-muted-foreground hover:bg-muted hover:text-foreground"}
+                        `}
                       >
-                        {ATTENDANCE_LABELS[v]}
-                      </Button>
-                    )
-                  )}
+                        {v === "all"
+                          ? "All"
+                          : v === "yes"
+                            ? "Contacted"
+                            : "Not contacted"}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-muted-foreground shrink-0">
-                  Type:
-                </span>
-                <div className="flex flex-wrap gap-1">
-                  {(["all", "attend", "ambassador"] as const).map((v) => (
-                    <Button
-                      key={v}
+                {/* Status */}
+                <div className="flex flex-col gap-1.5">
+                  <span className="text-xs font-medium text-muted-foreground">
+                    Status
+                  </span>
+                  <div className="inline-flex rounded-lg border border-border bg-background p-0.5 shadow-sm">
+                    <button
                       type="button"
-                      variant={filterType === v ? "default" : "outline"}
-                      size="sm"
-                      onClick={() => setFilterType(v)}
+                      onClick={() => setFilterAttendance("all")}
+                      className={`
+                        px-3 py-1.5 text-sm font-medium transition-colors rounded-l-md
+                        ${filterAttendance === "all"
+                          ? "bg-primary text-primary-foreground shadow-sm"
+                          : "bg-transparent text-muted-foreground hover:bg-muted hover:text-foreground"}
+                      `}
                     >
-                      {v === "all" ? "All" : v === "attend" ? "Attend" : "Ambassador"}
-                    </Button>
-                  ))}
+                      All
+                    </button>
+                    {(Object.keys(ATTENDANCE_LABELS) as AttendanceStatus[]).map(
+                      (v, i, arr) => (
+                        <button
+                          key={v}
+                          type="button"
+                          onClick={() => setFilterAttendance(v)}
+                          className={`
+                            px-3 py-1.5 text-sm font-medium transition-colors
+                            ${i === arr.length - 1 ? "rounded-r-md" : ""}
+                            ${filterAttendance === v
+                              ? "bg-primary text-primary-foreground shadow-sm"
+                              : "bg-transparent text-muted-foreground hover:bg-muted hover:text-foreground"}
+                          `}
+                        >
+                          {ATTENDANCE_LABELS[v]}
+                        </button>
+                      )
+                    )}
+                  </div>
+                </div>
+                {/* Type */}
+                <div className="flex flex-col gap-1.5">
+                  <span className="text-xs font-medium text-muted-foreground">
+                    Type
+                  </span>
+                  <div className="inline-flex rounded-lg border border-border bg-background p-0.5 shadow-sm">
+                    {(["all", "attend", "ambassador"] as const).map((v, i) => (
+                      <button
+                        key={v}
+                        type="button"
+                        onClick={() => setFilterType(v)}
+                        className={`
+                          px-3 py-1.5 text-sm font-medium transition-colors
+                          ${i === 0 ? "rounded-l-md" : ""}
+                          ${i === 2 ? "rounded-r-md" : ""}
+                          ${filterType === v
+                            ? "bg-primary text-primary-foreground shadow-sm"
+                            : "bg-transparent text-muted-foreground hover:bg-muted hover:text-foreground"}
+                        `}
+                      >
+                        {v === "all" ? "All" : v === "attend" ? "Attend" : "Ambassador"}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                {/* Parents */}
+                <div className="flex flex-col gap-1.5">
+                  <span className="text-xs font-medium text-muted-foreground">
+                    Parents
+                  </span>
+                  <div className="inline-flex rounded-lg border border-border bg-background p-0.5 shadow-sm">
+                    {(["all", "yes", "no"] as const).map((v, i) => (
+                      <button
+                        key={v}
+                        type="button"
+                        onClick={() => setFilterParentsAttending(v)}
+                        className={`
+                          px-3 py-1.5 text-sm font-medium transition-colors
+                          ${i === 0 ? "rounded-l-md" : ""}
+                          ${i === 2 ? "rounded-r-md" : ""}
+                          ${filterParentsAttending === v
+                            ? "bg-primary text-primary-foreground shadow-sm"
+                            : "bg-transparent text-muted-foreground hover:bg-muted hover:text-foreground"}
+                        `}
+                      >
+                        {v === "all" ? "All" : v === "yes" ? "Yes" : "No"}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -570,6 +644,7 @@ function Dashboard() {
                   <TableHead>Phone</TableHead>
                   <TableHead>College</TableHead>
                   <TableHead>Type</TableHead>
+                  <TableHead>Parents</TableHead>
                   <TableHead>Contacted</TableHead>
                   <TableHead>Status</TableHead>
                   <TableHead>Notes</TableHead>
@@ -581,13 +656,13 @@ function Dashboard() {
               <TableBody>
                 {query.isLoading ? (
                   <TableRow>
-                    <TableCell colSpan={11} className="text-muted-foreground">
+                    <TableCell colSpan={12} className="text-muted-foreground">
                       Loading…
                     </TableCell>
                   </TableRow>
                 ) : filteredRows.length === 0 ? (
                   <TableRow>
-                    <TableCell colSpan={11} className="text-muted-foreground">
+                    <TableCell colSpan={12} className="text-muted-foreground">
                       No registrations found.
                     </TableCell>
                   </TableRow>
@@ -604,6 +679,13 @@ function Dashboard() {
                         <Badge variant="outline">
                           {r.registration_type || "—"}
                         </Badge>
+                      </TableCell>
+                      <TableCell>
+                        {r.parents_attending ? (
+                          <Badge variant="default">Yes</Badge>
+                        ) : (
+                          <span className="text-muted-foreground">No</span>
+                        )}
                       </TableCell>
                       <TableCell>
                         {r.contacted ? (
