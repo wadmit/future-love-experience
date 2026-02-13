@@ -36,11 +36,13 @@ const LocationSection = () => {
                   <MapPin className="w-6 h-6 sm:w-7 sm:h-7 text-primary" />
                 </div>
                 <div>
-                  <p className="font-semibold text-foreground text-lg sm:text-xl">
-                    Chitwan, Landmark Narayani
+                  <p className="font-semibold text-foreground text-lg sm:text-xl leading-tight">
+                    Hotel Landmark Narayani (Royal Century)
                   </p>
                   <p className="text-muted-foreground text-sm mt-0.5">
-                    February 14, 2026 · 11:00 AM – 4:00 PM
+                    Bharatpur Height, Chitwan · Feb 14
+                    <br />
+                    11:00 AM – 4:00 PM
                   </p>
                 </div>
               </div>

@@ -71,23 +71,22 @@ const HeroSection = () => {
           mentors, and unlock your path to China.
         </p>
 
-        {/* Event Details */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mt-6 sm:mt-8 opacity-0-initial animate-fade-up delay-400">
-          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/10 backdrop-blur-sm">
-            <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-primary shrink-0" />
-            <span className="text-white font-medium text-xs sm:text-sm md:text-base">
-              Feb 14, 2026
-            </span>
+        {/* Event Details — two simple pills */}
+        <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mt-6 sm:mt-8 opacity-0-initial animate-fade-up delay-400">
+          <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/10">
+            <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary shrink-0" />
+            <span className="text-white text-sm font-medium">Feb 14, 2026</span>
           </div>
           <a
             href="https://share.google/tvxXOrKzTb0BB4lLp"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors"
+            className="inline-flex items-start gap-3 px-4 py-3 sm:px-5 sm:py-3.5 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 hover:bg-white/15 transition-colors w-full sm:w-auto sm:min-w-[20rem] sm:max-w-[26rem]"
           >
-            <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary shrink-0" />
-            <span className="text-white font-medium text-xs sm:text-sm md:text-base">
-              Chitwan, Landmark Narayani · View on map
+            <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary shrink-0 mt-0.5" />
+            <span className="text-white text-sm sm:text-base font-medium text-left leading-tight line-clamp-2 min-w-0">
+              Hotel Landmark Narayani (Royal Century), Bharatpur Height, Chitwan
+              <span className="text-primary/90 font-medium"> · View on map →</span>
             </span>
           </a>
         </div>
