@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { ArrowRight } from "lucide-react";
@@ -44,8 +45,12 @@ const registrationSchema = z
     },
   );
 type RegistrationFormData = z.infer<typeof registrationSchema>;
+const REFERRAL_MAX_LENGTH = 200;
+
 const RegistrationSection = () => {
   const { toast } = useToast();
+  const [searchParams] = useSearchParams();
+  const referralFromUrl = searchParams.get("referral")?.trim().slice(0, REFERRAL_MAX_LENGTH) ?? null;
   const [formData, setFormData] = useState<RegistrationFormData>({
     fullName: "",
     email: "",
@@ -105,6 +110,7 @@ const RegistrationSection = () => {
       parent_phone: formData.parentsAttending
         ? (formData.parentPhone.replace(/\D/g, "") || null)
         : null,
+      referral: referralFromUrl,
     };
 
     if (supabase) {

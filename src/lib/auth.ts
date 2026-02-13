@@ -8,6 +8,7 @@ const ALLOWED_EMAILS = [
   "suprem@wiseadmit.io",
   "nirmal@wiseadmit.io",
   "sobiya@wiseadmit.io",
+  "swikar@wiseadmit.io",
 ].map((e) => e.toLowerCase());
 
 export function isAllowedEmail(email: string): boolean {

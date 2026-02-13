@@ -63,6 +63,7 @@ type RegistrationRow = {
   attendance_status: AttendanceStatus | null;
   parents_attending: boolean | null;
   parent_phone: string | null;
+  referral: string | null;
   notes: string | null;
   updated_by: string | null;
   updated_at: string | null;
@@ -101,6 +102,7 @@ function downloadCsv(filename: string, rows: RegistrationRow[]) {
     "attendance_status",
     "parents_attending",
     "parent_phone",
+    "referral",
     "notes",
     "updated_by",
     "updated_at",
@@ -241,7 +243,7 @@ function Dashboard() {
       const res = await supabase!
         .from("registrations")
         .select(
-          "id, full_name, email, phone, college, registration_type, created_at, contacted, attendance_status, parents_attending, parent_phone, notes, updated_by, updated_at",
+          "id, full_name, email, phone, college, registration_type, created_at, contacted, attendance_status, parents_attending, parent_phone, referral, notes, updated_by, updated_at",
           { count: "exact" }
         )
         .order("created_at", { ascending: false })
@@ -283,8 +285,17 @@ function Dashboard() {
     import.meta.env.VITE_SUPABASE_URL && import.meta.env.VITE_SUPABASE_ANON_KEY
   );
 
+  const currentUserEmail = getAuthEmail()?.toLowerCase() ?? "";
+  const isReferralOnlyView = currentUserEmail === "swikar@wiseadmit.io";
+  const referralFilterValue = "swikar";
+
   const filteredRows = useMemo(() => {
     let rows = query.data?.rows ?? [];
+    if (isReferralOnlyView) {
+      rows = rows.filter(
+        (r) => (r.referral || "").toLowerCase() === referralFilterValue
+      );
+    }
     const q = search.trim().toLowerCase();
     if (q) {
       rows = rows.filter((r) => {
@@ -324,6 +335,7 @@ function Dashboard() {
     return rows;
   }, [
     query.data?.rows,
+    isReferralOnlyView,
     search,
     filterContacted,
     filterAttendance,
@@ -361,13 +373,16 @@ function Dashboard() {
                   </Button>
                 </div>
                 <h1 className="text-2xl sm:text-3xl font-bold text-foreground">
-                  Registered users
+                  {isReferralOnlyView
+                    ? "Registrations with referral: swikar"
+                    : "Registered users"}
                 </h1>
                 <p className="text-sm text-muted-foreground mt-1">
                   <span className="font-medium text-foreground">
                     {filteredRows.length}
                   </span>{" "}
                   registration{filteredRows.length !== 1 ? "s" : ""}
+                  {isReferralOnlyView && " (referral: swikar)"}
                   {/* Supabase */}
                 </p>
               </div>
@@ -648,6 +663,7 @@ function Dashboard() {
                   <TableHead>Type</TableHead>
                   <TableHead>Parents</TableHead>
                   <TableHead>Parent phone</TableHead>
+                  <TableHead>Referral</TableHead>
                   <TableHead>Contacted</TableHead>
                   <TableHead>Status</TableHead>
                   <TableHead>Notes</TableHead>
@@ -659,13 +675,13 @@ function Dashboard() {
               <TableBody>
                 {query.isLoading ? (
                   <TableRow>
-                    <TableCell colSpan={13} className="text-muted-foreground">
+                    <TableCell colSpan={14} className="text-muted-foreground">
                       Loading…
                     </TableCell>
                   </TableRow>
                 ) : filteredRows.length === 0 ? (
                   <TableRow>
-                    <TableCell colSpan={13} className="text-muted-foreground">
+                    <TableCell colSpan={14} className="text-muted-foreground">
                       No registrations found.
                     </TableCell>
                   </TableRow>
@@ -692,6 +708,16 @@ function Dashboard() {
                       </TableCell>
                       <TableCell className="whitespace-nowrap">
                         {r.parent_phone || "—"}
+                      </TableCell>
+                      <TableCell
+                        className="max-w-[160px] truncate text-muted-foreground"
+                        title={r.referral ?? undefined}
+                      >
+                        {r.referral ? (
+                          <span className="text-foreground">{r.referral}</span>
+                        ) : (
+                          "—"
+                        )}
                       </TableCell>
                       <TableCell>
                         {r.contacted ? (
