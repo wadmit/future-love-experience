@@ -98,7 +98,14 @@ const Footer = () => {
               </div>
               <div className="flex items-center justify-center md:justify-start gap-2 sm:gap-3">
                 <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-secondary-foreground/50 shrink-0" />
-                <span>Chitwan</span>
+                <a
+                  href="https://share.google/tvxXOrKzTb0BB4lLp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
+                  Chitwan · View event location on Google Maps
+                </a>
               </div>
             </div>
           </div>

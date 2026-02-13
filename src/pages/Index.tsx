@@ -4,6 +4,7 @@ import ExperienceSection from "@/components/landing/ExperienceSection";
 import SpeakersSection from "@/components/landing/SpeakersSection";
 import GiveawaySection from "@/components/landing/GiveawaySection";
 import RegistrationSection from "@/components/landing/RegistrationSection";
+import LocationSection from "@/components/landing/LocationSection";
 import FAQSection from "@/components/landing/FAQSection";
 import Footer from "@/components/landing/Footer";
 import StickyRegistration from "@/components/landing/StickyRegistration";
@@ -19,6 +20,7 @@ const Index = () => {
       <GiveawaySection />
       <SpeakersSection />
       <RegistrationSection />
+      <LocationSection />
       <FAQSection />
       <Footer />
       <StickyRegistration />

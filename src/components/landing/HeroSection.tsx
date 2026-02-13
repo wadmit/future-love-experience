@@ -55,7 +55,9 @@ const HeroSection = () => {
 
         {/* Headline */}
         <h1 className="opacity-0-initial animate-fade-up delay-100 px-1">
-          <span className="display-xl text-primary text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">Fall in Love</span>
+          <span className="display-xl text-primary text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
+            Fall in Love
+          </span>
           <span className="display-xl text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
             {" "}
             with Your Future
@@ -77,18 +79,35 @@ const HeroSection = () => {
               Feb 14, 2026
             </span>
           </div>
-          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/10 backdrop-blur-sm">
+          <a
+            href="https://share.google/tvxXOrKzTb0BB4lLp"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors"
+          >
             <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary shrink-0" />
-            <span className="text-white font-medium text-xs sm:text-sm md:text-base">Chitwan</span>
-          </div>
+            <span className="text-white font-medium text-xs sm:text-sm md:text-base">
+              Chitwan, Landmark Narayani · View on map
+            </span>
+          </a>
         </div>
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-6 sm:mt-8 md:mt-10 opacity-0-initial animate-fade-up delay-500">
-          <Button variant="hero" size="default" className="btn-glow h-11 sm:h-12 sm:px-8 sm:text-base md:h-14 md:px-10 md:text-lg w-full sm:w-auto" asChild>
+          <Button
+            variant="hero"
+            size="default"
+            className="btn-glow h-11 sm:h-12 sm:px-8 sm:text-base md:h-14 md:px-10 md:text-lg w-full sm:w-auto"
+            asChild
+          >
             <a href="#register">Register for Event</a>
           </Button>
-          <Button variant="heroOutline" size="default" className="h-11 sm:h-12 sm:px-8 sm:text-base md:h-14 md:px-10 md:text-lg w-full sm:w-auto" asChild>
+          <Button
+            variant="heroOutline"
+            size="default"
+            className="h-11 sm:h-12 sm:px-8 sm:text-base md:h-14 md:px-10 md:text-lg w-full sm:w-auto"
+            asChild
+          >
             <a href="#register">Become Student Ambassador</a>
           </Button>
         </div>

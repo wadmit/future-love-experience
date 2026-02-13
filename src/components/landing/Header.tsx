@@ -21,6 +21,7 @@ const Header = () => {
     { label: "Experience", href: "#experience" },
     { label: "Giveaway", href: "#giveaway" },
     { label: "Speakers", href: "#speakers" },
+    { label: "Location", href: "#location" },
     { label: "Register", href: "#register" },
   ];
 
