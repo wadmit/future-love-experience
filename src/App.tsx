@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/Dashboard";
+import Colleges from "./pages/Colleges";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,14 @@ const App = () => (
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/colleges"
+            element={
+              <ProtectedRoute>
+                <Colleges />
               </ProtectedRoute>
             }
           />

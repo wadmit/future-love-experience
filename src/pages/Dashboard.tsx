@@ -5,6 +5,7 @@ import { format, formatDistanceToNow, isYesterday } from "date-fns";
 import {
   ArrowLeft,
   Bug,
+  Building2,
   Download,
   LogOut,
   Pencil,
@@ -388,6 +389,12 @@ function Dashboard() {
               </div>
 
               <div className="flex items-center gap-2">
+                <Button asChild variant="outline" size="sm">
+                  <Link to="/colleges">
+                    <Building2 className="w-4 h-4 mr-2" />
+                    By college
+                  </Link>
+                </Button>
                 <Button
                   type="button"
                   variant="outline"
